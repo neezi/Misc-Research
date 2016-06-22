@@ -1,0 +1,421 @@
+\documentclass[twocolumn,english,pra,aps,superscriptaddress,floatfix]{revtex4-1}
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{amssymb}
+%\usepackage{esint}
+\usepackage{bm}
+\usepackage{latexsym}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+\@ifundefined{textcolor}{}
+{%
+ \definecolor{BLACK}{gray}{0}
+ \definecolor{WHITE}{gray}{1}
+ \definecolor{RED}{rgb}{1,0,0}
+ \definecolor{GREEN}{rgb}{0,1,0}
+ \definecolor{BLUE}{rgb}{0,0,1}
+ \definecolor{CYAN}{cmyk}{1,0,0,0}
+ \definecolor{MAGENTA}{cmyk}{0,1,0,0}
+ \definecolor{YELLOW}{cmyk}{0,0,1,0}
+ }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+%\numberwithin{equation}{section}
+
+\makeatother
+
+\usepackage{babel}
+
+\begin{document}
+
+
+
+\author{N. Miladinovic}
+\affiliation{Department of Physics and Astronomy, McMaster University, 1280 Main
+St.\ W., Hamilton, ON, L8S 4M1, Canada} 
+
+
+\title{The optical He-McKellar-Wilkens phase and the Abraham/Minkowski controversy}
+\date{October 21 2013}
+\begin{abstract}
+\label{sec:abstract}
+
+Let's talk about the He-McKellar-Wilkens phase and its connection to the Abraham/Minkowski momentum problem.  
+\end{abstract}
+
+\pacs{42.50.Ex, 42.50.Pq, 42.60.Da, 42.82.Et, 03.67.Lx}
+
+\maketitle
+
+\section{Forces}
+\label{sec:forces}
+
+We begin with the Lorentz force law for a charge $q$ acted on by an electric field $\mathbf{E}$ and a magnetic field $\mathbf{B}$. Let $\mathbf{x}$ be the position of the charge.
+
+\begin{equation}
+\mathbf{f}=q\left(\mathbf{E}+\frac{d\mathbf{x}}{dt}\times\mathbf{B}\right)
+\label{lorentz}
+\end{equation}
+
+We now wish to calculate the force on a dipole in a nonuniform electromagnetic field.  To begin let us write the total force each charge in the dipole experiences.
+\begin{eqnarray}
+&m_1\ddot{\bf{r}}_1=q\left(\mathbf{E}\left(\mathbf{r}_1,t\right)+\dot{\mathbf{r}}_1\times\mathbf{B}\left(\mathbf{r}_1,t\right)\right)-\nabla\mathbf{U}\left(\mathbf{r}_1,t\right)&\nonumber \\
+&m_2\ddot{\bf{r}}_2=-q\left(\mathbf{E}\left(\mathbf{r}_2,t\right)+\dot{\mathbf{r}}_2\times\mathbf{B}\left(\mathbf{r}_2,t\right)\right)+\nabla\mathbf{U}\left(\mathbf{r}_2,t\right)&  
+\label{lorentz}
+\end{eqnarray}
+Where $\mathbf{U}$ is the binding energy of the dipole. We make use of the center of mass coordinates
+\begin{equation}
+\mathbf{r}=\frac{m_1}{m_1+m_2}\mathbf{r}_1+\frac{m_2}{m_1+m_2}\mathbf{r}_2
+\label{com}
+\end{equation}
+and taking a first order expansion of the fields about the center of mass
+\begin{eqnarray}
+&\mathbf{E}\left(\mathbf{r}_1\right)=\mathbf{E}\left(\mathbf{r}\right)+\left(\mathbf{r}_1-\mathbf{r}\right)\cdot\nabla\mathbf{E}\left(\mathbf{r}\right)& \nonumber \\
+&\mathbf{E}\left(\mathbf{r}_2\right)=\mathbf{E}\left(\mathbf{r}\right)+\left(\mathbf{r}_2-\mathbf{r}\right)\cdot\nabla\mathbf{E}\left(\mathbf{r}\right)&
+\label{expansion}
+\end{eqnarray}
+A similar expansion applies to the magnetic fields. Substituting the first order expansions into Eq.\ (\ref{lorentz}), along with the center of mass coordinates, and adding the two equations together yields
+\begin{eqnarray}
+&\left(m_1+m_2\right)\ddot{\mathbf{r}}=q\left(\mathbf{r}_1-\mathbf{r}_2\right)\cdot\nabla\mathbf{E}\left(\mathbf{r}\right) &\nonumber \\
+&+q\left(\dot{\mathbf{r}}_1-\dot{\mathbf{r}}_2\right)\times\mathbf{B}\left(\mathbf{r}\right)+q\dot{\mathbf{r}}\times\left(\mathbf{r}_1-\mathbf{r}_2\right)\cdot\nabla\mathbf{B}\left(\mathbf{r}\right)&\nonumber\\
+\end{eqnarray}
+We introduce the dipole $\mathbf{d}=q\Delta\mathbf{x}$ where $\Delta\mathbf{x}$ is the distance between the charges.  This allows us to write the dipole force as
+\begin{eqnarray}
+ \mathbf{f} &=& \left(\mathbf{p}\cdot\nabla\right)\mathbf{E}+\frac{d\mathbf{p}}{dt}\times\mathbf{B} +\mathbf{v}\times\left(\mathbf{d}\cdot\nabla\mathbf{B}\right)\nonumber \\
+ &=& \alpha\left[\left(\mathbf{E}\cdot\nabla\right)\mathbf{E}+\frac{d\mathbf{E}}{dt}\times\mathbf{B}+\mathbf{v}\times\left(\mathbf{E}\cdot\nabla\mathbf{B}\right)\right] \nonumber \\
+  &=& \alpha\left[\left(\mathbf{E}\cdot\nabla\right)\mathbf{E}+\frac{\partial\mathbf{E}}{\partial t}\times\mathbf{B}+\left(\mathbf{v}\cdot\nabla\mathbf{E}\right)\times\mathbf{B}+\mathbf{v}\times\left(\mathbf{E}\cdot\nabla\mathbf{B}\right)\right]\nonumber \\
+\label{lorentz3}
+\end{eqnarray}
+
+where $\alpha$ is the polarizability of the atom given by $\mathbf{p}=\alpha\mathbf{E}$.  In the last line we have made use of the covective derivative $\frac{d}{dt}=\frac{\partial}{\partial t}+\mathbf{v}\cdot\nabla$. We now make use of the following vector identity
+\begin{equation}
+\left(\mathbf{E}\cdot\nabla\right)\mathbf{E}=\nabla\left(\frac{1}{2}E^2\right)-\mathbf{E}\times\left(\nabla\times\mathbf{E}\right)
+\label{vectorid}
+\end{equation}
+
+and Faraday's law
+\begin{equation}
+\nabla\times\mathbf{E}=-\frac{\partial\mathbf{B}}{\partial t}
+\label{faraday}
+\end{equation}
+
+which allows us to rearrange Eq.\ (\ref{lorentz3})
+
+\begin{eqnarray}
+\mathbf{f} &=& \alpha\left[\frac{1}{2}\nabla E^2-\mathbf{E}\times\left(-\frac{d\mathbf{B}}{dt}\right)+\frac{d\mathbf{E}}{dt}\times\mathbf{B}\right] \nonumber \\
+ &=& \alpha\left[\frac{1}{2}\nabla E^2+\frac{d}{dt}\left(\mathbf{E}\times\mathbf{B}\right)\right]
+\label{lorentz4}
+\end{eqnarray}
+In this standard expression \cite{Berry,hinds,loudon3} many authors emphasize the fact that the second term integrates to zero over an optical cycle.  This is certainly true for a plane wave, but is not generally correct. Let's take a closer look at the dipole force by considering a traveling wave of the form
+\begin{align}
+&\mathbf{\mathcal{E}}(\mathbf{r},\mathrm{t})=\mathrm{Re}\left[\mathbf{E}(\mathbf{r},\mathrm{t})\exp{(-i\omega t})\right]=\mathbf{E}(\mathbf{r},\mathrm{t})\cos{\omega t}& \nonumber \\
+&\mathbf{\mathcal{B}}(\mathbf{r},\mathrm{t})=\mathrm{Re}\left[\mathbf{B}(\mathbf{r},\mathbf{t})\exp{(-i\omega t})\right]=\mathbf{B}(\mathbf{r},\mathrm{t})\cos{\omega t}&
+\label{fields2}
+\end{align}
+where $\mathbf{E}$ is also a function of time.  The dipole moment $\mathbf{p}$ is
+\begin{align}
+&\mathbf{p}(\mathbf{r},\mathrm{t})=\mathrm{Re}\left[\alpha\mathbf{E}(\mathbf{r},\mathrm{t})\exp{(-i\omega t})\right]& \nonumber \\
+&=\alpha_{\mathrm{r}}\mathbf{E}(\mathbf{r},\mathrm{t})\cos{\omega t} + \alpha_{\mathrm{i}}\mathbf{E}(\mathbf{r})\sin{\omega t}&
+\label{dipole2}
+\end{align}
+Plugging this into Eq.\ (\ref{lorentz3})
+\begin{align}
+&\mathbf{f}=\alpha_{\mathrm{r}}\mathbf{E}(\mathbf{r},\mathrm{t})\cdot\nabla\mathbf{E}(\mathbf{r},\mathrm{t})\cos^2{\omega t}& \nonumber \\
+&+\alpha_{\mathrm{i}}\mathbf{E}(\mathbf{r},\mathrm{t})\cdot\nabla\mathbf{E}(\mathbf{r},\mathrm{t})\cos{\omega t}\sin{\omega t}& \nonumber \\
+& -\alpha_{\mathrm{r}}\omega\mathbf{E}(\mathbf{r},\mathrm{t})\times\mathbf{B}(\mathbf{r})\cos{\omega t}\sin{\omega t}& \nonumber \\
+&+
+\alpha_{\mathrm{r}}\left[\frac{\partial}{\partial t}\mathbf{E}(\mathbf{r},\mathrm{t})\right]\times\mathbf{B}(\mathbf{r},\mathrm{t})\cos^2{\omega t}& \nonumber \\
+&+\alpha_{\mathrm{i}}\omega\mathbf{E}(\mathbf{r},\mathrm{t})\times\mathbf{B}(\mathbf{r})\cos^2{\omega t}& \nonumber \\
+&+
+\alpha_{\mathrm{i}}\left[\frac{\partial}{\partial t}\mathbf{E}(\mathbf{r},\mathrm{t})\right]\times\mathbf{B}(\mathbf{r},\mathrm{t})\cos{\omega t}\sin{\omega t}&
+\end{align}
+This may be rewritten as 
+\begin{align}
+&\mathbf{f}=\alpha_{\mathrm{r}}\mathbf{E}(\mathbf{r},\mathrm{t})\cdot\nabla\mathbf{E}(\mathbf{r},\mathrm{t})\cos^2{\omega t}& \nonumber \\
+&+\alpha_{\mathrm{i}}\mathbf{E}(\mathbf{r},\mathrm{t})\cdot\nabla\mathbf{E}(\mathbf{r},\mathrm{t})\cos{\omega t}\sin{\omega t}& \nonumber \\
+&+
+\alpha_{\mathrm{r}}\frac{\partial}{\partial t}\left[\mathbf{E}(\mathbf{r},\mathrm{t})\cos{\omega t}\right]\times\mathbf{B}(\mathbf{r},\mathrm{t})\cos{\omega t}& \nonumber \\
+&+
+\alpha_{\mathrm{i}}\frac{\partial}{\partial t}\left[\mathbf{E}(\mathbf{r},\mathrm{t})\cos{\omega t}\right]\times\mathbf{B}(\mathbf{r},\mathrm{t})\sin{\omega t}& \nonumber \\
+&+\alpha_{\mathrm{i}}\omega\mathbf{E}(\mathbf{r},\mathrm{t})\times\mathbf{B}(\mathbf{r},\mathrm{t})&
+\end{align}
+Then using Faraday's law Eq.\ (\ref{faraday}) and the vector identity Eq.\ (\ref{vectorid}) we get
+\begin{align}
+&\alpha_{\mathrm{r}}\mathbf{E}(\mathbf{r},\mathrm{t})\cdot\nabla\mathbf{E}(\mathbf{r},\mathrm{t})\cos^2{\omega t}& \nonumber \\
++ &\alpha_{\mathrm{i}}\mathbf{E}(\mathbf{r},\mathrm{t})\cdot\nabla\mathbf{E}(\mathbf{r},\mathrm{t})\cos{\omega t}\sin{\omega t}& \nonumber \\
+= &\alpha_{\mathrm{r}}\nabla\left(\frac{1}{2}E^2(\mathbf{r},\mathrm{t})\right)\cos^2{\omega t}& \nonumber \\
++&\alpha_{\mathrm{i}}\nabla\left(\frac{1}{2}E^2(\mathbf{r},\mathrm{t})\right)\cos{\omega t}\sin{\omega t}& \nonumber \\
++&\alpha_{\mathrm{r}}\mathbf{E}(\mathbf{r},\mathrm{t})\cos{\omega t}\times\frac{\partial}{\partial t}\left[\mathbf{B}(\mathbf{r},\mathrm{t})\cos{\omega t}\right]& \nonumber \\
++&\alpha_{\mathrm{i}}\mathbf{E}(\mathbf{r},\mathrm{t})\sin{\omega t}\times\frac{\partial}{\partial t}\left[\mathbf{B}(\mathbf{r},\mathrm{t})\cos{\omega t}\right]&
+\end{align}
+This allows us to write the dipole force as
+\begin{align}
+\mathbf{f}=&\alpha_{\mathrm{r}}\nabla\left(\frac{1}{2}E^2(\mathbf{r},\mathrm{t})\right)\cos^2{\omega t}+& \nonumber \\
+&\alpha_{\mathrm{i}}\nabla\left(\frac{1}{2}E^2(\mathbf{r},\mathrm{t})\right)\cos{\omega t}\sin{\omega t}& \nonumber \\
+& +\alpha_{\mathrm{r}}\frac{\partial}{\partial t}\left[\mathbf{E}(\mathbf{r},\mathrm{t})\cos{\omega t}\times\mathbf{B}(\mathbf{r},\mathrm{t})\cos{\omega t}\right]& \nonumber \\
+& +\alpha_{\mathrm{i}}\mathbf{E}(\mathbf{r},\mathrm{t})\sin{\omega t}\times\frac{\partial}{\partial t}\left[\mathbf{B}(\mathbf{r},\mathrm{t})\cos{\omega t}\right]& \nonumber \\
+& +\alpha_{\mathrm{i}}\frac{\partial}{\partial t}\left[\mathbf{E}(\mathbf{r},\mathrm{t})\cos{\omega t}\right]\times\mathbf{B}(\mathbf{r},\mathrm{t})\sin{\omega t}& \nonumber \\
+& +\alpha_{\mathrm{i}}\omega\mathbf{E}(\mathbf{r},\mathrm{t})\times\mathbf{B}(\mathbf{r},\mathrm{t})&
+\end{align}
+Let us now only consider the terms $\mathbf{f}_{\mathrm{r}}$ containing the real component of the polarizability $\alpha_{\mathrm{r}}$.  
+\begin{align}
+&\mathbf{f}_{\mathrm{r}}=\alpha_{\mathrm{r}}\nabla\left(\frac{1}{2}E^2(\mathbf{r},\mathrm{t})\right)\cos^2{\omega t}\\
+& +\alpha_{\mathrm{r}}\frac{\partial}{\partial t}\left[\mathbf{E}(\mathbf{r},\mathrm{t})\cos{\omega t}\times\mathbf{B}(\mathbf{r},\mathrm{t})\cos{\omega t}\right]& 
+\label{lorentzforceB}
+\end{align}
+This is what we are after. Notice that in the second term, had the amplitudes been constant as in a plane wave, then the total force would integrate to zero over an optical cycle.  To see this we assume the amplitude $\mathbf{E}(\mathbf{r},\mathrm{t})$ is no longer a function of time.  Then we would have
+\begin{align}
+&\alpha_{\mathrm{r}}\frac{\partial}{\partial t}\left[\mathbf{E}(\mathbf{r})\cos{\omega t}\times\mathbf{B}(\mathbf{r})\cos{\omega t}\right]& \nonumber \\
+&=-2\omega\alpha_{\mathrm{r}}\left[\mathbf{E}(\mathbf{r})\sin{\omega t}\times\mathbf{B}(\mathbf{r})\cos{\omega t}\right]&
+\label{lorentzforceC}
+\end{align}
+which integrates to zero over an optical cycle.  If however we have a time dependence to the electric field amplitude, we obtain the additional terms 
+\begin{align}
+&=\alpha_{\mathrm{r}}\left[\dot{\mathbf{E}}(\mathbf{r},\mathbf{r},\mathrm{t})\cos{\omega t}\times\mathbf{B}(\mathbf{r})\cos{\omega t}\right]& \nonumber \\
+&=\alpha_{\mathrm{r}}\left[\mathbf{E}(\mathbf{r},\mathbf{r},\mathrm{t})\cos{\omega t}\times\dot{\mathbf{B}}(\mathbf{r})\cos{\omega t}\right]&
+\label{lorentzforceD}
+\end{align}
+which of course do not vanish over an optical cycle. This is an extremely important point.  The other important point is that we have some freedom in determining a relative contribution to the total force from each component of Eq.\ (\ref{lorentzforceB}).  To see this, consider an electric field amplitude of the form $\mathbf{E}(\mathbf{k}\cdot\mathbf{r}-\omega t)$.  The first component takes a spatial derivative of this bringing a factor of $k$ out.  The second term takes a time derivative bringing out a factor of $\omega$.  For travelling waves these two are related by a scaling factor of $c$ which makes the second term exactly twice as large as the first (remember that taking the time derivative of the second term gives two components, and hence the double in size). However, for arbitrary envelope speeds we don't necessarily need the scaling factor to be $c$ and hence may have some freedom in determining the relative importance of each term. For superluminal envelope speeds, we may make the second component the dominant term. \\
+If we now wish to find the momentum transferred to an atom, we integrate $\mathbf{f}_{\mathrm{r}}$ with respect to time.  The second term in Eq.\ (\ref{lorentzforceB}) is the Abraham force. In the next section we shall show explicitly how this term allows us to either obtain the Minkowki or the Abraham form.  \\
+Finally, let's look at the decomposition of the dipole force Eq.\ (\ref{lorentz4}) to better understand the two terms comprising it.  How did we arrive at this form for the dipole force?  We began with the Lorentz force and determined the total force acting on the center of mass of a dipole configuration by considering the Lorentz force on each of the charges. By doing so we arrived at Eq.\ (\ref{lorentz3}) which contained 2 components.  The first component is well known force on a dipole due to a nonuniform electric field.  The second term is due to the internal dynamics of the atom.  Going through the derivation, we see this term is due to the relative motion $\dot{\mathbf{r}}_1-\dot{\mathbf{r}}_2$ of the charges in the dipole. Interestingly, this is the only term that contributes to the force on a dipole in a transverse field, such as a plane wave. The i'th component of the dipole force Eq.\ (\ref{lorentz3}) may be written as
+\begin{equation}
+\mathbf{f}_i =\left(\mathbf{p}\cdot\nabla\right)\mathbf{E}_i+\left(\frac{d\mathbf{p}}{dt}\times\mathbf{B}\right)_i
+\label{lorentz6}
+\end{equation}
+We see that for transverse fields, the first term does not contribute, and the entire force is contained in the second term. 
+
+\section{Energy Momentum}
+\label{sec:EnergyMomentum}
+
+The problem comes down to understanding how to create the electromagnetic energy-momentum tensor in a material.  The tensor will have contributing terms from both the electromagnetic field, and also from the material itself. Let us first find the energy momentum-tensor for an electromagnetic field in matter.  We are considering the medium to be non-magnetic and dispersionless.  It is also at rest with respect to our reference frame. 
+
+Let's start where we should start, Maxwell's equations in matter.
+\begin{align}
+&\nabla\cdot\mathbf{D}=\rho_f& \label{1}\\
+&\nabla\cdot\mathbf{B}=0& \label{2}\\ 
+&\nabla\times\mathbf{E}= -\frac{\partial\mathbf{B}}{\partial t}& \label{3}\\
+&\nabla\times\mathbf{H}=\mathbf{J}_f+\frac{\partial\mathbf{D}}{\partial t}&\label{4}
+\end{align}
+Here the electric displacement $\mathrm{D}$ and magnetic field intensity $\mathrm{H}$ are defined as
+\begin{align}
+&\mathbf{D}=\varepsilon_0\mathbf{E}+\mathbf{P}& 
+&\mathbf{H}=\frac{1}{\mu_0}\mathbf{B}-\mathbf{M}& 
+\end{align}
+where $\mathbf{M}$ is the magnetization.  We can derive Poynting's theorem by taking the dot product of $\mathbf{E}$ with Eq.\ (\ref{4}) and $\mathbf{H}$ with Eq.\ (\ref{3}), then subtracting the two.  This yields
+\begin{equation}
+\mathbf{E}\cdot\left(\nabla\times\mathbf{H}\right) -\mathbf{H}\cdot\left(\nabla\times\mathbf{E}\right)=\mathbf{E}\cdot\mathbf{J}_f+\mathbf{E}\cdot\frac{\partial\mathbf{D}}{\partial t} +\mathbf{H}\cdot\frac{\partial\mathbf{B}}{\partial t}
+\end{equation}
+We then make use of the identity $\mathbf{E}\cdot\left(\nabla\times\mathbf{H}\right) -\mathbf{H}\cdot\left(\nabla\times\mathbf{E}\right)= -\nabla\cdot\left(\mathbf{E}\times\mathbf{H}\right)$ which gives us
+\begin{equation}
+\frac{\partial}{\partial t}\frac{1}{2}\left(\mathbf{E}\cdot\mathbf{D} + \mathbf{B}\cdot\mathbf{H}\right) =-\mathbf{E}\cdot\mathbf{J}_f-\nabla\cdot\left(\mathbf{E}\times\mathbf{H}\right)
+\label{poyntingthm}
+\end{equation}
+Eq.\ (\ref{poyntingthm}) is Poynting's theorem.  The left side is the rate of change of energy, the first term on the right is the work done on the charges, with the second term being the divergence of the Poynting vector (energy flux density).
+We next derive the force equation for an electromagnetic field on the free charges of a material. The Lorentz force per volume on free charges is given by 
+\begin{equation}
+\mathbf{f}^L=\rho_f \mathbf{E}+\mathbf{J}_f\times\mathbf{B}
+\end{equation}
+where $\rho_f$ and $\mathbf{J}_f$ are the free charge and free current densities respectively.  Substituting in  Eq.\ (\ref{1}) and  Eq.\ (\ref{4}) gives
+\begin{equation}
+\mathbf{f}^L=\mathbf{E}\left(\nabla\cdot\mathbf{D}\right) -\mathbf{B}\times\nabla\times\mathbf{H}-\frac{\partial\mathbf{D}}{\partial t}\times\mathbf{B}
+\end{equation}
+We can rearrange this and use Eq.\ (\ref{3}) to get
+\begin{equation}
+\mathbf{f}^L=\mathbf{E}\left(\nabla\cdot\mathbf{D}\right) -\mathbf{B}\times\nabla\times\mathbf{H}-\mathbf{D}\times\nabla\times\mathbf{E}-\frac{\partial}{\partial t}\left(\mathbf{D}\times\mathbf{B}\right)
+\label{minkowskiforce1}
+\end{equation}
+After some manipulation, we arrive at
+\begin{equation}
+\mathbf{f}^L+\frac{\partial}{\partial t}\left[\mathbf{D}\times\mathbf{B}\right]=\nabla\cdot\left(\mathbf{E}\mathbf{D}+\mathbf{H}\mathbf{B}-\frac{1}{2}\mathbf{I}\left(\mathbf{D}\cdot\mathbf{E}+\mathbf{H}\cdot\mathbf{B}\right)\right)
+\label{momentum3}
+\end{equation}
+Where $\mathbf{E}\mathbf{B}$ represents the outer product between the electric and magnetic field. We now combine  Eq.\ (\ref{momentum3}) with the Poynting theorem  Eq.\ (\ref{poyntingthm}) into a a four dimensional expression. The result is the Minkowski energy-momentum tensor
+\begin{align}
+&T^{\mu\nu}_{Min} =& \nonumber \\ &\begin{pmatrix} \frac{1}{2}\left(\mathbf{E}\cdot\mathbf{D} + \mathbf{B}\cdot\mathbf{H}\right) & \mathbf{E}\times\mathbf{H} \\  \mathbf{D}\times\mathbf{B} & -\mathbf{E}\mathbf{D}-\mathbf{H}\mathbf{B}+\frac{1}{2}\mathbf{I}\left(\mathbf{D}\cdot\mathbf{E}+\mathbf{H}\cdot\mathbf{B}\right) \end{pmatrix}&
+\label{tensor}
+\end{align}
+Where  
+\begin{equation}
+T^{00} = \frac{1}{2}\left(\mathbf{E}\cdot\mathbf{D} + \mathbf{B}\cdot\mathbf{H}\right)
+\label{energydensity2}
+\end{equation}
+is the energy density
+\begin{equation}
+T^{0a} = \mathbf{E}\times\mathbf{H} 
+\label{energyflux2}
+\end{equation}
+is the energy flux density 
+\begin{equation}
+T^{a0} = \mathbf{D}\times\mathbf{B} 
+\label{momentumdensity2}
+\end{equation}
+is the momentum density
+\begin{equation}
+T_{ab}= -E_aD_b - B_aH_b+\frac{1}{2}\delta_{ab}\left(\mathbf{E}\cdot\mathbf{D}+ \mathbf{B}\cdot\mathbf{H}\right)
+\label{stresstensor4}
+\end{equation}
+is the Maxwell stress tensor.  From this tensor we can obtain the Poyting theorem and the free charge force via
+\begin{equation}
+\frac{\partial T_{ik}}{\partial x_k}=f_i
+\end{equation}
+where $f_0=-\mathbf{E}\cdot\mathbf{J}_f$ and $f_{\alpha}=f^L$.  Where does that leave the Abraham tensor?  Let's go back through the derivation.  If we go back to Eq.\ (\ref{minkowskiforce1}) we can see where the Abraham tensor deviates from the Minkowski tensor.  Taking Eq.\ (\ref{minkowskiforce1}) and subtracting  
+$\varepsilon_0\left(\mathbf{\varepsilon_r}+1\right)\frac{\partial}{\partial t}\mathbf{E}\times\mathbf{B}$ from both sides gives us
+\begin{align}
+&\mathbf{f}^L +\varepsilon_0\left(\mathbf{\varepsilon_r}-1\right)\frac{\partial}{\partial t}\mathbf{E}\times\mathbf{B}& \nonumber \\&=\mathbf{E}\left(\nabla\cdot\mathbf{D}\right) -\mathbf{B}\times\nabla\times\mathbf{H}-\mathbf{D}\times\nabla\times\mathbf{E}-\frac{\partial}{\partial t}\frac{\mathbf{E}\times\mathbf{H}}{c^2}&
+\label{abrahamforce1}
+\end{align}
+We have introduced a new volume density force $f^A=\varepsilon_0\left(\mathbf{\varepsilon_r}-1\right)\frac{\partial}{\partial t}\mathbf{E}\times\mathbf{B}$ which is known as the Abraham force.  
+This along with Eq.\ (\ref{poyntingthm}) can be combined to create the Abraham energy-momentum tensor
+\begin{align}
+&T^{\mu\nu}_{Min} =& \nonumber \\ &\begin{pmatrix} \frac{1}{2}\left(\mathbf{E}\cdot\mathbf{D} + \mathbf{B}\cdot\mathbf{H}\right) & \mathbf{E}\times\mathbf{H} \\  \frac{\mathbf{E}\times\mathbf{H}}{c^2} & -\mathbf{E}\mathbf{D}-\mathbf{H}\mathbf{B}+\frac{1}{2}\mathbf{I}\left(\mathbf{D}\cdot\mathbf{E}+\mathbf{H}\cdot\mathbf{B}\right) \end{pmatrix}&
+\label{tensor}
+\end{align}
+We the momentum is $\frac{\mathbf{E}\times\mathbf{H}}{c^2}$ and
+\begin{equation}
+\frac{\partial T_{ik}}{\partial x_k}=f_i
+\end{equation}
+where $f_0=-\mathbf{E}\cdot\mathbf{J}_f$ and $f_{\alpha}=f^L + f^A$.  The Abraham force term is more familiar to us if we write it in another form.  We use the relations $\epsilon_0\mathbf{\chi} = N\alpha$ where $N$ is the volume density and $\mathbf{\chi}=\epsilon_r-1$ where $\epsilon_r$ is the relative susceptibility.  The Abraham force may then be written as $f^A=\alpha N\frac{\partial}{\partial t}\mathbf{E}\times\mathbf{B}$.  This is the density of the second term in Eq.\ (\ref{lorentz4}) which Hinds has shown to be the term responsible for obtaining the total Abraham momentum (integrating the density over the entire wave packet volume).  
+
+\section{Canonical and Kinetic Momentum}
+\label{sec:material}
+What is the Lagrangian for a dipole in an electromagnetic field?  We would be tempted to say
+\begin{equation}
+\mathrm{L}=\frac{1}{2}\mathrm{M}\mathbf{V}^2 + \mathbf{d}\cdot\mathbf{E} + \mathbf{\mu}\cdot\mathbf{B}
+\label{lagrangian1}
+\end{equation}
+However this is incorrect because we have naively written down the electromagnetic field in our rest frame and not that of the moving dipole.  We must therefore change $\mathbf{E}\rightarrow\mathbf{E}+\mathbf{V}\times\mathbf{B}$ and $\mathbf{B}\rightarrow\mathbf{B}-\mathbf{V}\times\mathbf{E}/c^2$. This tells us that the correct Lagrangian for a dipole in an electromagnetic field is given by
+\begin{equation}
+\mathrm{L}=\frac{1}{2}\mathrm{M}\mathbf{V}^2 + \mathbf{d}\cdot\left(\mathbf{E} +\mathbf{V}\times\mathbf{B}\right)+ \mathbf{\mu}\cdot\left(\mathbf{B}-\frac{\mathbf{V}\times\mathbf{E}}{c^2}\right)
+\label{lagrangian2}
+\end{equation}
+With this we can use the Euler-Lagrange equation to obtain the proper force on the dipole
+\begin{eqnarray}
+&\mathrm{M}\ddot{\mathbf{R}}=\nabla\left[ \mathbf{d}\cdot\left(\mathbf{E}+\mathbf{V}\times\mathbf{B}\right)+ \mathbf{\mu}\cdot\left(\mathbf{B}-\frac{\mathbf{V}\times\mathbf{E}}{c^2}\right)\right]& \nonumber \\
+& +\frac{\partial}{\partial t}\left(\mathbf{d}\times\mathbf{B} + \frac{\mathbf{E}\times\mathbf{\mu}}{c^2}\right)&
+\label{lorentz2}
+\end{eqnarray}
+Here we have made use of the vector identity
+\begin{equation}
+\mathbf{A}\cdot\left(\mathbf{B}\times\mathbf{C}\right)=\mathbf{B}\cdot\left(\mathbf{C}\times\mathbf{A}\right)=\mathbf{C}\cdot\left(\mathbf{A}\times\mathbf{B}\right)
+\label{vectorid3}
+\end{equation}
+Comparing this with the dipole force equation Eq.\ (\ref{vectorid}) we see two extra terms with velocity dependence.  These are exactly the terms we neglected previously owing to the fact that they are of order $V/c$ smaller than the other terms.  We can also obtain the canonical momentum from the Lagrangian
+\begin{equation}
+\mathrm{P}_{\mathrm{canonical}}=\mathrm{M}\mathbf{V} + \mathbf{B}\times\mathbf{d}+ \frac{\mathbf{\mu}\times\mathbf{E}}{c^2}
+\label{lagrangian2}
+\end{equation}
+The total momentum of the system - electromagnetic + material -  is fixed.  What is not fixed is where we draw the line separating the two.  Consider the Einstein box gadanken experiment. What we know is that by the time the light packet has left the box, it has been displaced a finite amount due to the Lorentz force on the dipoles comprising the material.  The box clearly has some momentum while the light is traveling in the medium.  The Abraham picture views this as mechanical momentum.  The Minkowski view on the other hand is that this momentum originates and propagates with the electromagnetic field and therefore sees it as being part of the electromagnetic momentum.  
+Let us now take a look at a light-atom system to see how the above arguments leads to the Minkowski momentum $\mathbf{p}_{\mathrm{Min}}=\mathbf{D}\times\mathbf{B}$ being identified as canonical and Abraham $\mathbf{p}_{\mathrm{Abr}}=\mathbf{E}\times\mathbf{H}/c^2$ being categorized as kinetic.  When a single point dipole is coupled to an electromagnetic field, it's canonical momentum is given by
+\begin{equation}
+\mathbf{P}_\mathrm{c}=\mathbf{P}_\mathrm{k} - \mathbf{d}\times\mathbf{B} + \frac{\mathbf{m}\times\mathbf{E}}{c^2}
+\end{equation}
+Here $\mathbf{P}_\mathrm{c}$ is the particles canonical momentum, $\mathbf{P}_\mathrm{k}$ is the kinetic momentum, $\mathbf{d}$ is the dipole momentum. We can get into more familiar territory if we rewrite this as
+\begin{equation}
+\mathbf{P}_\mathrm{c}=\mathbf{P}_\mathrm{k} - \alpha\mathbf{E}\times\mathbf{B}
+\label{atomicmomentum}
+\end{equation}
+The second term on the right hand side of Eq.\ (\ref{atomicmomentum}) is recognized as the momentum component responsible for the Abraham force.  From here we see that the total momentum of the light-atom system is 
+\begin{equation}
+\mathbf{P}_{\mathrm{total}}=\mathbf{P}_{\mathrm{k}}-\alpha\mathbf{E}\times\mathbf{B} + \int \! \mathbf{D}\times\mathbf{B} \, \mathrm{d}^3r.
+\label{totalmomentum}
+\end{equation}
+It is only the division of the momentum that causes ambiguity.  If we group the first two terms on the right hand side of Eq.\ (\ref{totalmomentum}) as the momentum associated with the material, then we have $\mathbf{P}_{\mathrm{total}}=\mathbf{P}_{\mathrm{c}}+\mathbf{p}_{\mathrm{Min}}$.  On the other hand, we could have just as well grouped the last two terms into the electromagnetic momentum, this transforms the expression into $\mathbf{P}_{\mathrm{total}}=\mathbf{P}_{\mathrm{k}}+\mathbf{p}_{\mathrm{Abr}}$
+\\
+We have seen that the terms $\mathbf{d}\times\mathbf{B}$ and $\mathbf{m}\times\mathbf{E}/c^2$ are a manifestation of changing frames from the lab frame to the dipoles frame. Can we also interpret these terms in some other classical way?  Such alternative connections do seem to exist. Let's begin by considering 3 problems in electrodynamics.  The first is determining the electromagnetic momentum of a stationary magnetic dipole in a time independent electric field. One finds an electromagnetic momentum to be \cite{Babson09} $\mathbf{m}\times\mathbf{E}/c^2$.  This is all well and good until you stop and think what the implications of this are.  The magnetic moment is stationary, and the field is constant, but we are to believe that a system with a stationary center of mass-energy carries linear momentum?  The resolution of this apparent paradox comes by considering a magnetic dipole $\mathbf{m}$ created by a rectangular loop of wire which carries a steady current \cite{griffiths}.  Suppose an electric field $\mathbf{E}$ is applied along the direction of one of the rectangle's lengths.  Then classically we expect the total momentum to be zero as the current should be the same in all 4 sections of the loop.  However, relativistically we find this isn't the case.  Charges in one segment move faster than charges in another as the electric field speeds up and slows down charges in the loop along it's direction.  One finds that this effect produces a mechanical momentum of \cite{griffiths} $\mathbf{m}\times\mathbf{E}/c^2$ which exactly cancels the electromagnetic momentum carried by the fields!  
+\\
+Let's now consider the momentum required to create the dipole as an electromagnetic wave passes through.  The impulse $\mathbf{I}$ received by the dipole is
+\begin{equation}
+\mathbf{I}= \int \! \mathbf{F} \, \mathrm{d}t = \int \! \mathbf{F} \, \mathrm{d}t
+\label{Impulse1}
+\end{equation}
+where the force $\mathbf{F}$ is nothing but the Lorentz force acting on each charge.  
+\begin{eqnarray}
+&\mathbf{F}= q\frac{\partial\mathbf{x}_1}{\partial t}\times\mathbf{B} - q\frac{\partial\mathbf{x}_2}{\partial t}\times\mathbf{B}& \nonumber \\
+= &\frac{\partial \left(q\mathbf{x}_1-q\mathbf{x}_1\right)}{\partial t}\times\mathbf{B} - \frac{\partial\mathbf{q}}{\partial t}\left(\mathbf{x}_1-\mathbf{x}_2\right)\times\mathbf{B}& \nonumber \\
+=&\frac{\partial\mathbf{q}}{\partial t}\left(\mathbf{x}_1-\mathbf{x}_2\right)\times\mathbf{B}&
+\label{Impulse2}
+\end{eqnarray}
+Here we see that the time derivative of the dipole drops out as this is constant.  Plugging this back into Eq.\ (\ref{Impulse1}) gives us
+\begin{equation}
+\mathbf{I}= \left(\int_0^q \! \mathrm{d}q\right)\left(\mathbf{x}_1-\mathbf{x}_2\right)\times\mathbf{B} \, \mathrm{d}t = \mathbf{d}\times\mathbf{B}\\
+\label{Impulse3}
+\end{equation}
+We now have all the pieces to the puzzle.  It's time to put things together.  Let's go back to the dipole force Eq.\ (\ref{lorentz4}) and understand what it is telling us.  The first term is the force due to the energy of the dipole-field interaction energy $\mathbf{P}\cdot\mathbf{E}$.  This however doesn't include the two extra factors I have just presented.  The first tells us that if our material had a magnetic moment $\mathbf{m}$, then as the field passes through, the influence of the electric field on the moment current adds an extra $\mathbf{m}\times\mathbf{E}/c^2$ momentum to the material and hence takes away the same amount from the field.  In addition, the magnetic field slaps on an additional cost to the creation of the dipole (usually neglected and assumed to be done completely by the electric field) by stealing $\mathbf{d}\times\mathbf{B}$ momentum from the fields. With that we can account for all the terms in the dipole force Eq.\ (\ref{lorentz4}).
+\section{So what happens in experiments?}
+\label{sec:experiment}
+Why is it that so many experiments tend to favor the Minkowski form and that there are only a couple claims to Abraham? The reason lies with the Abraham force $f^A=\varepsilon_0\left(\mathbf{\varepsilon_r}-1\right)\frac{\partial}{\partial t}\mathbf{E}\times\mathbf{B}$. As we saw in Section \ref{sec:forces}, this only becomes relevant in certain situations.  We saw that this force averages to zero over an optical cycle. This makes it notoriously difficult to see in experimentation. The momentum transferred however, is only dependent on the initial and final amplitude of the field.  If one considers the momentum gained from the field due to a field which is initially at zero and is then turned up to some maximal strength $E_{\mathrm{max}}$, one finds the Abraham contribution is twice as much as that due to the gradient force.  Of course for a pulsed field, the Abraham force will contribute zero total momentum as the initial and final amplitudes are both the same.  The reason why the Abraham force has been so elusive, is because we have been doing the wrong experiments. Recently, Rikken and Tiggelen [2] claim to have seen the Abraham force.  In their experiment however, they used a static magnetic field and applied an alternating voltage perpendicular to the magnetic field.  As the Abraham force is applied at a normal angle to the $E$ and $B$ fields, they only measured the force acting in this direction and therefore were able to avoid the issue of having the Abraham force masked by the gradient force.  What we are looking for however is an example in which one observes the Abraham momentum in an electromagnetic field.  Let us first go through some of the big experiments in which the authors make claims to the Minkowski form.
+\\
+The first experiment to consider was performed by Pritchard and Ketterle \cite{ketterle}.  They used an elongated $^{87}Rb$ Bose-Einstein condensate contained in a magnetic trap.  They used a $\lambda=780 nm$ standing wave pulse which acted for $5 \mu s$ to out couple approximately $5\%$ of the atoms.  After waiting $600 \mu s$ a second pulse was applied which out coupled another group of atoms, interfering with the first group.  Using ballistic imaging they were able to resolve the momentum states and conclude that the atoms had acquired a momentum kick proportional to the refractive index of the gas, thus corroborating Minkowki's claim.  We immediately see the issue here however.  By pulsing the standing wave, they have ensured that the Abraham force will contribute nothing after the full pulse cycle.  
+
+So what is the message to take home from this?  Let's go back and take a look at Poynting's theorem in the Minkowski and the Abraham representation.  In the Minkowski representation we have
+\begin{equation}
+\mathbf{f}+\frac{\partial}{\partial t}\left[\mathbf{D}\times\mathbf{B}\right]=\nabla\cdot\left(\mathbf{E}\mathbf{D}+\mathbf{H}\mathbf{B}-\frac{1}{2}\mathbf{I}\left(\mathbf{D}\cdot\mathbf{E}+\mathbf{H}\cdot\mathbf{B}\right)\right)
+\end{equation}
+\\
+where we identify $\mathbf{f}$ with the mechanical momentum of system.  What this equation is telling us is that 
+\begin{equation}
+\frac{\partial}{\partial t}\left(\mathbf{P}_{\mathrm{mechanical}}\right)+\frac{\partial}{\partial t}\left(\mathbf{P}_{\mathrm{electromagnetic}}\right)=\nabla\cdot\mathbf{W}_{\mathrm{total}}
+\end{equation}
+where $\mathbf{P}_{\mathrm{mechanical}}$ is the mechanical momentum of the material, $\mathbf{P}_{\mathrm{electromagnetic}}$ is the electromagnetic momentum, and $\mathbf{W}_{\mathrm{total}}$ is the total work done.  Now just as we had previously done in the Energy Momentum section, we and subtract  
+$\varepsilon_0\left(\mathbf{\varepsilon_r}+1\right)\frac{\partial}{\partial t}\mathbf{E}\times\mathbf{B}$ from both sides.  This gives us
+\begin{equation}
+\tilde{\mathbf{f}}+\frac{\partial}{\partial t}\frac{\mathbf{E}\times\mathbf{H}}{c^2} =\nabla\cdot\left(\mathbf{E}\mathbf{D}+\mathbf{H}\mathbf{B}-\frac{1}{2}\mathbf{I}\left(\mathbf{D}\cdot\mathbf{E}+\mathbf{H}\cdot\mathbf{B}\right)\right)
+\end{equation}
+where $\tilde{\mathbf{f}}=\mathbf{f}+\varepsilon_0\left(\mathbf{\varepsilon_r}+1\right)\frac{\partial}{\partial t}\mathbf{E}\times\mathbf{B}$.  Now in the Abraham representation, all we have done is identified $\tilde{\mathbf{f}}$ with $\frac{\partial}{\partial t}\mathbf{P}_{\mathrm{mechanical}}$ and $\frac{\mathbf{E}\times\mathbf{H}}{c^2}$ with $\frac{\partial}{\partial t}\mathbf{P}_{\mathrm{electromagnetic}}$.  So how does this fit in with our findings that the Abraham force $\varepsilon_0\left(\mathbf{\varepsilon_r}+1\right)\frac{\partial}{\partial t}\mathbf{E}\times\mathbf{B}$ is usually negligible?  Consider that experiments will measure the momentum impulse $\tilde{\mathbf{f}}$ of the atoms and since the Abraham term is so notoriously difficult to detect, they will detect the absence of this term and will therefore assume the material momentum is $\mathbf{f}$ which will lead them to the Minkowski momentum.  So what is the correct picture.  The correct picture is the Abraham representation.  Going back to the derivation of the Minkowski representation, it's clear that the material momentum only considers the free charge momentum.  The Abraham representation correctly accounts for the momentum of the bound charges which travel along with the pulse.  These bound charges are pulled towards the pulse as it approaches, and then rapidly brought to a halt as the pulse passes.  It is this ephemeral motion which is to blame for all the confusion.  
+
+
+\section{Other interesting things}
+\label{sec:interesting}
+
+Something else that I came across is the so called Nelson formulation [1] in which the momentum density is $\varepsilon_0\mathbf{E}\times\mathbf{B}$.  This expression turns out to be extremely similar to the Abraham formulation and differs only by a factor of $\mu^{-1}_r$ which is usually extremely close to 1.  Experiment would be hard pressed to distinguish the two.  The reason why this formulation is interesting is that in the quantum picture, there is a third type of momentum that is conserved in time.  This momentum $\mathbf{P}_N$ is given by $\mathbf{P}_N=\mathbf{P}_k - 2\mathbf{d}\times\mathbf{B}$.  This momentum is linked to the Nelson electromagnetic momentum and hence has a valid claim to the pie.
+The other interesting thing we could investigate is the relationship between the electromagnetic momentum and the Aharanov-Casher effect and the so called hidden momentum problem.  If we consider magnetically polarizable matter, the Minkowski and Abraham term differ by an additional term $\mathbf{m}\times\mathbf{E}/c^2$.  This is the term responsible for both the Aharonov-Casher effect and for the hidden momentum in electromagnetic fields.  Likewise, the momentum of a point dipole in a constant magnetic field carries linear momentum $\frac{1}{2}\mathbf{d}\times\mathbf{B}$.  Since the center of mass-energy of the system is at rest, we expect there to be no momentum.  This tells us that there is hidden momentum $\frac{1}{2}\mathbf{d}\times\mathbf{B}$ in the material to counter this electromagnetic momentum.  This is strikingly similar to the other term found in the Abraham force.  In fact that derivation requires the magnetic field to be constant, and if we average our field so that we can treat it as being time independent, we obtain the same factor of 1/2.  How does this relate to the Aharonov-Bohm effect? I don't know.
+
+
+\begin{thebibliography}{8}
+
+\bibitem{Berry}{M. V. Berry and Pragya Shukla, J. Phys. A 46, 422001 (2013).}
+
+\bibitem{Nelson}{D.F. Nelson, Phys. Rev. A 44, 3985 (1991).}
+
+\bibitem{Rikken}{G. L. J. A. Rikken, and B. A. van Tiggerlen, Phys. Rev. Lett. 108, 230402 (2012).}
+
+\bibitem{barnett}{S. M. Barnett, Phys. Rev. Lett. 104, 070401 (2010).}
+
+\bibitem{chiao}{J. C. Garrison and R. Y. Chiao, Phys. Rev. A 70, 053826 (2004).}
+
+\bibitem{mansuripur}{M. Mansuripur and A. R. Zakharian, Phys. Rev. E 79, 026608 (2009).}
+
+\bibitem{ketterle}{G. K. Campbell, A. E. Leanhardt, J. Mun, M. Boyd, E. W. Streed, W. Ketterle, and D. E. Pritchard, Phys. Rev. Lett. 94, 170403 (2005).}
+
+\bibitem{feng}{W. She, J. Yu, and R. Feng, Phys. Rev. Lett. 101, 243601 (2008).}
+
+\bibitem{hinds}{E. Hinds and S. M. Barnett, Phys. Rev. Lett. 102, 050403 (2009).}
+
+\bibitem{loudon}{S. M. Barnett and R. Loudon, Phil. Trans. R. Soc. A,  368 (2011).}
+
+\bibitem{lang73}{R. Lang, M. O. Scully and W. E. Lamb, Phys. Rev. A \textbf{7}, 1788 (1973).}
+
+\bibitem{domokos08}{J. K. Asboth, H. Ritsch, and P. Domokos, Pyhs. Rev. A \textbf{77}, 063424 (2008).}
+
+\bibitem{griffiths}{David J. Griffiths, \textit{Introduction to Electrodynamics} Third Edition (Prentice Hall, New Jersey, 1999).}
+
+\bibitem{cohentannoudji}{C. Cohen-Tannoudji, J. Dupont-Roc, G. Grynberg, \textit{Atom-Photon Interactions} (Wiley Professional, 1989).}
+
+\bibitem{us}{N. Miladinovic, F. Hasan, N. Chisholm, E. A. Hinds, and D. H. J. O'Dell, Phys. Rev. A \textbf{84}, 043822 (2011).}
+
+\bibitem{preble07}{S. F. Preble, Q. Xu, and M. Lipson, Nat. Photon. \textbf{1}, 293 (2007).}
+
+\bibitem{pfeifer07}{Robert N. C. Pfeifer, Timo A. Nieminen, Norman R. Heckenberg, and Halina Rubinsztein-Dunlop, Rev. Mod. Phys. \textbf{79}(4) 1197-1216 (2007)}
+
+\bibitem{Babson09}{David Babson, Stephen P. Reynolds, Robin Bjorkquist, and David j. Griffiths, American association of physics teachers (2009)}
+
+\bibitem{loudon2}{M. Padgett, S. M. Barnett and R. Loudon, J. Mod. Opt.\textbf{50} ,1555 (2003).}
+
+\bibitem{loudon3}{S. M. Barnett and R. Loudon, J. Phys. B. \textbf{39} ,S671 (2006).}
+
+\end{thebibliography}
+
+\end{document}

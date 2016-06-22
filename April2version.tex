@@ -1,0 +1,379 @@
+\documentclass[twocolumn,english,pra,aps,superscriptaddress,floatfix]{revtex4-1}
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{amssymb}
+%\usepackage{esint}
+\usepackage{bm}
+\usepackage{latexsym}
+\usepackage{braket}
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+\@ifundefined{textcolor}{}
+{%
+ \definecolor{BLACK}{gray}{0}
+ \definecolor{WHITE}{gray}{1}
+ \definecolor{RED}{rgb}{1,0,0}
+ \definecolor{GREEN}{rgb}{0,1,0}
+ \definecolor{BLUE}{rgb}{0,0,1}
+ \definecolor{CYAN}{cmyk}{1,0,0,0}
+ \definecolor{MAGENTA}{cmyk}{0,1,0,0}
+ \definecolor{YELLOW}{cmyk}{0,0,1,0}
+ }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+%\numberwithin{equation}{section}
+
+\makeatother
+
+\usepackage{babel}
+
+\begin{document}
+
+
+
+\author{N. Miladinovic}
+\affiliation{Department of Physics and Astronomy, McMaster University, 1280 Main
+St.\ W., Hamilton, ON, L8S 4M1, Canada} 
+\author{D.\ H.\ J.\ O'Dell}
+\affiliation{Department of Physics and Astronomy, McMaster University, 1280 Main
+St.\ W., Hamilton, ON, L8S 4M1, Canada}
+
+\title{The optical He-McKellar-Wilkens phase and its connection to the Abraham-Minkowski puzzle}
+\date{\today}
+
+\begin{abstract}
+\label{sec:abstract}
+We extend the long-standing Abraham-Minkowski puzzle concerning the momentum of light inside a dielectric medium into the quantum regime by revealing a close connection to the He-McKellar-Wilkens (HMW) phase (the quantum phase acquired by a neutral electric dipole moving in a static magnetic field). In order to do this we consider an optical version of the HMW phase that is acquired by a dipole moving in a laser beam, and propose using a triple Bragg grating Mach-Zehnder interferometer to observe it. 
+
+
+%We extend the concept of the He-McKellar-Wilkens (HMW) phase (the quantum phase acquired by a neutral electric dipole moving in a static magnetic field) into the optical domain by considering an atom with an (induced) oscillating electric dipole moving in a laser beam. In so doing, we reveal a close connection to the long-standing Abraham-Minkowski puzzle concerning the momentum of light inside a dielectric medium. In order to detect the optical HMW phase we propose using a Bose-Einstein condensate in a Ramsey-type interferometer. We also examine the prospects for measuring the phase with a triple Bragg grating Mach-Zehnder interferometer. Finally, we discuss the Hinds-Barnett \cite{hinds09} result for the momentum transferred to an atom by a laser pulse and make sure we understand it from a quantum perspective by working out the expectation value of the momentum inside of the pulse.
+
+\end{abstract}
+%\pacs{42.50.Ex, 42.50.Pq, 42.60.Da, 42.82.Et, 03.67.Lx}
+
+\maketitle
+
+\section{HMW phase}
+\label{sec:HMW}
+
+The HMW phase is a topological quantum phase predicted by He and McKellar in 1993 \cite{mckellar93} and independently by Wilkens in 1994 \cite{wilkens94}. It is one of a family of four such phases that includes the Aharonov-Bohm (AB) \cite{aharanov59} and Aharonov-Casher (AC) \cite{aharanov84} phases that are all related by electromagnetic dualities  \cite{dowling99}. The AB phase arises when a charged particle moves in a region of space where there is a nonzero magnetic vector potential $\mathbf{A}$ and yet the magnetic field $\mathbf{B}= \nabla \times \mathbf{A}$ vanishes, as is the case outside a solenoid. There is no force acting on the particle and according to classical mechanics the particle is unaffected by the presence of the solenoid. However, in the quantum case the particle's wave function is affected. Any path encircling the solenoid acquires the phase 
+\begin{equation}
+\phi_{\mathrm{AB}}=(q/ \hbar) \oint \mathbf{A}(\mathbf{r}) \cdot d \mathbf r
+\label{eq:phiAB}
+\end{equation}
+ which can be seen in the interference pattern between paths passing on different sides of the solenoid. The significance of the AB phase is generally taken to be that it can either be viewed as a manifestation of the physical reality of electromagnetic potentials or of the non locality of quantum mechanics \cite{vaidmann}.  The HMW phase \cite{mckellar93,wilkens94}
+ \begin{equation}
+ \phi_{\mathrm{HMW}} = \hbar^{-1} \oint [\mathbf{B}(\mathbf{r}) \times \mathbf {d}] \cdot d \mathbf r 
+ \label{eq:phiHMW}
+ \end{equation}
+  is associated with a neutral quantum particle endowed with an electric dipole moment $\mathbf{d}$ moving in a closed circuit in a static magnetic field of strength $\mathbf{B}$. Like the AC phase $\phi_{\mathrm{AC}} = -(\hbar c^2)^{-1} \oint [\mathbf{E}(\mathbf{r}) \times \boldsymbol{\mu}] \cdot d \mathbf r $, where a magnetic moment $\boldsymbol{\mu}$ moves in a static electric field and experiences to first order in $v/c$ the motional magnetic field $\mathbf{B}_{\mathrm{mot}} = - \mathbf{v} \times \mathbf{E} /c^2$, the electric dipole in the HMW phase  experiences a motional electric field $\mathbf{E}_{\mathrm{mot}} = \mathbf{v} \times \mathbf{B}$ leading to the R\"{o}ntgen interaction \cite{wilkens94}. In order to obtain a finite HMW (or AC) phase the physical electromagnetic fields should not vanish everywhere on the circuit (unlike in the AB phase) and yet various configurations of the fields and polarization have been proposed \cite{mckellar93,wilkens94,dowling99,wei95} where no forces appear to act and yet the phase is finite.  Indeed, it has been shown that the HMW phase can be derived by considering the sum of the two AB phases acquired by the two charges forming the dipole \cite{wei95}. 
+   
+%The AB phase for a circuit $\phi_{\mathrm{AB}}=(q/ \hbar) \oint \mathbf{A}(\mathbf{r}) \cdot d \mathbf r $  arises when a  particle with electric charge $q$ moves in a region of space where there is a nonzero magnetic vector potential $\mathbf{A}$ and yet the magnetic field $\mathbf{B}= \nabla \times \mathbf{A}$ vanishes, as is the case outside a solenoid.
+
+Experimental confirmation of the AB \cite{chambers60,tonomura86,olariu85,peshkin89} and the AC  \cite{cimmino89,sangster93,zeiske95,gorlitz95,yanagimachi02} phases came quite quickly after the theoretical predictions and the experiments have continued to be refined over the years. The HMW phase was only recently detected in an experiment using lithium atoms in a Mach-Zehnder atom interferometer  \cite{vigue1,vigue2,vigue3,vigue4}. These latter experiments took care to establish that the phase was dispersionless (independent of velocity) and reversed sign when the direction of travel of the atoms was reversed. These properties are hallmarks of geometric phases (of which topological phases are a particular case) and are in contrast to dynamical phases. The latter originate from potentials (and thus forces) and depend on the time spent in the interferometer and hence inversely upon the speed of the atom. 
+
+
+Both the HMW and the AC phases can be derived using the Feynman path integral approach which associates the phase $\int L dt$ with every path if we adopt the standard direct coupling Lagrangian $L$ supplemented by the motional fields
+\begin{equation}
+L=\frac{1}{2}m v^2 +  \mathbf{d} \cdot (\mathbf{E}+ \mathbf{v}\times \mathbf{B})+ \boldsymbol{\mu} \cdot (\mathbf{B}- \mathbf{v}\times \mathbf{E}/c^2)  
+\label{eq:Lagrangian}
+\end{equation}
+where $m$ is the mass of the particle and $\mathbf{E}$ and $\mathbf{B}$ are specified in the laboratory frame.  Because we are interested in the optical regime where the $\mathbf{E}$ and $\mathbf{B}$ fields rapidly change sign, whereas $\mathbf{\mu}$ does not, we shall neglect the third term in Eq.\ (\ref{eq:Lagrangian}) because it vanishes when averaged over an optical cycle. The resulting Lagrangian can be compared to the standard \emph{minimal} coupling Lagrangian for a charged particle 
+\begin{equation}
+L=\frac{1}{2}m v^2 +  q  \mathbf{v} \cdot \mathbf{A} - q \phi
+\end{equation}
+where $\phi$ is the scalar potential. Comparing terms we can formally associate $\mathbf{B} \times \mathbf{d}$ with $q \mathbf {A}$ and $\mathbf{d} \cdot \mathbf{E}$ with $-q \phi$. In this way the HMW phase given in Eq.\ (\ref{eq:phiHMW}) follows directly from the AB phase given in Eq.\ (\ref{eq:phiAB}). Apart from the quantum HMW phase, these associations also suggest that we can treat the dipole as an effective charge interacting with the following effective fields
+\begin{eqnarray}
+\mathbf{B}_{\mathrm{eff}}  & \equiv & \nabla \times \mathbf{A}_{\mathrm{eff}} = \frac{1}{q} \nabla \times (\mathbf{B} \times \mathbf{d}) \label{eq:Beff} \\
+\mathbf{E}_{\mathrm{eff}}  & \equiv & - \nabla \phi_{\mathrm{eff}} - \frac{\partial \mathbf{A}_{\mathrm{eff}} }{\partial t} = \frac{1}{q} \left[ \nabla (\mathbf{d} \cdot \mathbf{E}) - \frac{\partial}{\partial t} (\mathbf{B} \times \mathbf{d}) \right] . \label{eq:Eeff}
+\end{eqnarray}
+that account for (classical) electromagnetic forces on the dipole. In the linear response regime $\mathbf{d}=\alpha (\mathbf{E}+ \mathbf{v}\times \mathbf{B})$ \cite{wei95}, where $\alpha$ is the polarizability, and we can replace the second term in the Lagrangian by $(\alpha/2) (\mathbf{E}+ \mathbf{v}\times \mathbf{B})^2$. Following through the calculation we find that to lowest order in $v/c$ we can replace $\mathbf{B} \times \mathbf{d}$ by $\alpha (\mathbf{B} \times \mathbf{E})$ and $\mathbf{d} \cdot \mathbf{E}$ by $(\alpha/2) E^2$ in the Eqns.\ (\ref{eq:Beff}) and (\ref{eq:Eeff}). The terms depending on $\mathbf{B} \times \mathbf{E}$ are proportional to the local Poynting vector $\mathbf{S}=(\mathbf{E} \times \mathbf{B})/\mu_{0}$ of the optical field. In the plane wave laser beams we shall consider here, the Poynting vector has zero curl and so $\mathbf{B}_{\mathrm{eff}} =0$. The very interesting case of laser beams with non-zero orbital angular momentum such as Laguerre-Gauss beams that would give  $\mathbf{B}_{\mathrm{eff}} \neq 0$ will be considered elsewhere. We thus find that the force on the dipole in an optical field carrying zero orbital angular momentum is purely due to the effective electric field
+\begin{equation}
+\mathbf{F}=q \mathbf{E}_{\mathrm{eff}}= \nabla \left( \frac{\alpha}{2} E^2 \right)+\alpha \frac{\partial}{\partial t} (\mathbf{E} \times \mathbf{B}).
+\end{equation}
+The first term is the familiar induced dipole force that depends on the gradient of the intensity \cite{cohentannoudjibook}. The second term depends on the time-dependence of the Poynting vector. It is zero in static field configurations but gives a contribution, for example, when fields are turned on and off. Unlike the dipole force, it is nonconservative, a feature it shares with magnetic forces in general due to the form of the velocity dependence of the Lagrangian.
+
+
+
+%The HMW phase is analogous to the AC phase with the magnetic dipole of the AC phase substituted by an electric dipole in the HMW arrangement and exchanging the electric for a magnetic field. Detection of the HMW phase has proven to be illusive despite Wilkens' 1994 proposal \cite{wilkens} for an experimental test. Almost two decades after Wilkens' publication, Vigue et. al. \cite{vigue2} were finally able to demonstrate the phase experimentally using a lithium atom interferomter. The difficulty in observing the HMW phase is due to the fact that the effect is exceedingly small relative to more dominant interactions such as the dipole and scattering forces.
+
+%In the linear response regime $\mathbf{d}=\alpha (\mathbf{E}+ \mathbf{v}\times \mathbf{B})$ \cite{wei95}, where $\alpha$ is the polarizability, and we can replace the second term in the Lagrangian by $(\alpha/2) (\mathbf{E}+ \mathbf{v}\times \mathbf{B})^2$.
+
+
+\section{Abraham-Minkowski puzzle}
+\label{sec:AM}
+
+The question of what is the correct expression for the momentum density $\mathbf{g}$ of an electromagnetic field inside a dielectric medium turns out to be surprisingly  subtle \cite{Peierls91}. In 1908 Minkowski proposed $\mathbf{g}_M=\mathbf{D} \times \mathbf{B}$ and the following year Abraham proposed instead $\mathbf{g}_A=\frac{1}{c^2} \mathbf{E} \times \mathbf{H}$, see Refs.\ \cite{Brevik} and \cite{pfeifer07}  for reviews. In terms of the magnitude of the momentum of a photon, these expressions are equivalent to $p_M= p_{0} n_{r}$ and $p_A=p_{0}/n_{r}$, respectively, where $p_0=\hbar k$ is the momentum of a photon in free space, and $n_r$ is the refractive index of the medium.  Simple and equally compelling arguments can be given to justify each form \cite{leonhardt06,loudon11}.
+
+In his famous review on relativity \cite{pauli}, Pauli pointed out that $\mathbf{g}_{A}$ gives the same ponderomotive force on a stationary dielectric as $\mathbf{g}_{M}$ except for an extra term, which we shall call the R\"{o}ntgen momentum,
+\begin{equation}
+\mathbf{p}_{\mathrm{Ront}}= \frac{\partial}{\partial t} (\mathbf{d} \times \mathbf{B} ) .
+\label{eq:Ront}
+\end{equation}
+However, Pauli noted that ``Because of the smallness of this term, it is hardly likely that an experiment could be devised for deciding in favour of one or the other of the two approaches''. That has not stopped people from trying, and the last 100 years have seen many studies devoted to identifying the correct form of $\mathbf{g}$, including recent theory and experiments  \cite{Gordon73,chiao,Loudon05,ketterle,feng,mansuripur,hinds09,barnett10}. In particular, Gordon has convincingly shown that when the Lorentz force is used to calculate the ponderomotive force on a nondispersive dielectric medium the result agrees with the Abraham form \cite{Gordon73}. The Lorentz force approach allows for a physical interpretation of the origin of the R\"{o}ntgen term which is due to the Lorentz force on the internal electric current in an oscillating dipole due to the magnetic field [Check]. Hinds and Barnett used the Lorentz force approach to study the simplest dielectric of all, a single atom, interacting with a travelling pulse of laser light \cite{hinds09}. The standard optical dipole force predicts that an atom will be attracted into a red-detuned pulse, but they showed that the extra R\"{o}ntgen term given in Eq.\ (\ref{eq:Ront}) produces a force of twice the magnitude and in the opposite direction to the dipole force so that the atom is \emph{repelled} from the pulse. The experiment with the greatest relevance to the present work is that by Campbell \emph{et al} \cite{ketterle} who measured the recoil momentum of atoms scattered out of a Bose-Einstein condensate by a pulse of standing-wave light, and found the Minkowski result $p_M$. However, because their standing wave of light had zero net Poynting vector we expect that $P_M=P_A$ in this case. 
+
+It appears that there is now a consensus that both the Abraham and the Minkowski forms can be correct, depending upon exactly what is measured \cite{Loudon05,barnett10}. An important step in resolving the Abraham-Minkowski puzzle was the realization that $p_{M}$ and $p_A$ are the photon momenta associated with the canonical and kinetic momentum of the atoms, respectively.  This link appears to have first been established by Loudon, Babiker, Baxter and Lembessis \cite{lembessis}. This  allows for a more intuitive understanding of the mechanism responsible for the different responses seen in experiments. In particular, it can be argued that the Abraham momentum is associated with centre-of-mass motion of a medium, whereas if the medium is capable of diffracting (as cold atoms can), the Minkowski momentum is more relevant because the momentum operator in quantum mechanics is associated with the canonical momentum (we shall see in this paper that this guess is not really true since we use diffraction to obtain a result in agreement with Abraham...).  In this paper we extend this line of investigation by considering the quantum phases acquired by atoms interacting with light rather than the classical forces. Inside a plane wave laser beam an atom will feel no classical dipole force and yet will acquire a quantum phase due to the R\"{o}ntgen interaction (it is straightforward to show that in the path-integral formulation of quantum mechanics the term given in Eq.\ (\ref{eq:Ront}) leads directly to the HMW phase). This line of inquiry leads us to connect the Abraham momentum density with the so called He-McKellar-Wilkens (HMW) phase. 
+
+
+
+
+
+ 
+%*********************************************************
+\section{Mach-Zehnder Interferometer}
+\label{sec:mach}
+%*********************************************************
+In this section we consider a Mach-Zehnder interferometer arrangement which can be used to detect the optical HMW phase.  The interferomter uses 3 optical gratings which Raman scatter a collimated and velocity selected atomic beam.  Along one of the arms, we apply a traveling wave beam as seen in fig.\ref{fig:mach}. The beam is then retro-reflected back along the other arm. Each arm is approximately 10cm in length and the atoms are emitted from the oven at a velocity of $10^3$ m/s. 
+%***************************figure**********************
+\begin{figure}
+\includegraphics[width=1\columnwidth]{MachZehnder6.pdf}
+\caption{A Mach-Zehnder inteferometer with a travelling wave laser applied along the lower arm and retro-reflected back along the upper arm.  The atoms are split into an upper and lower paths through the use of 3 Raman beams.  The atoms pick up an HMW phase as they along/against the applied laser proportional to the the Poynting vector $\mathbf{S}$.} 
+\label{fig:mach}
+\end{figure}
+%*********************************************************
+The atom will then pick up an HMW phase shift $ \phi_{\mathrm{HMW}} = \hbar^{-1} \oint [\mathbf{B}(\mathbf{r}) \times \mathbf {d}] \cdot d \mathbf r $ due to the presence of the laser along the lower arm and the opposite phase along the upper path.  
+
+The difficulty in realizing this effect experimentally hangs in the ability to maximize the contribution due to the HMW phase, while suppressing spontaneous emission. The HMW phase is incredibly small and requires a large intensity to become visible. The danger in pushing the intensity too high is that decoherence due to spontaneous emission can smear out any trance of the HMW effect. The Rayleigh scattering rate $\gamma_{R}$ is given by
+\begin{equation}
+\mathrm{\gamma_{R}=\frac{I\alpha ^2 k^3}{6 \pi\epsilon_{0}^2 c\hbar}}
+\label{scatter}
+\end{equation}
+Where $I=\frac{1}{2}c\epsilon_0 E^2$ is the intensity of the beam. The goal is then to find a regime in which we may observe the HMW phase without spontaneous emission.
+To this end, we consider Rubidium detuned from the D1 line by 1THz.  The corresponding polarizability is then  $\alpha=2\times10^{-37}\, \,\mathrm{F\cdot m^2}$.  We find that using these parameters, the intensity required to obtain an HMW phase shift of 1 radian along the 10cm arm is $I=2\times 10^5 \,\, \mathrm{W/cm^2}$. Plugging this into  Eq.\ (\ref{scatter}) gives $\mathrm{\gamma_{R}}=800$, which corresponds to less than a 10 \% chance of a spontaneous event occurring during the process.
+%***************************figure**********************
+\begin{figure}
+\includegraphics[width=1\columnwidth]{laserconfigurations3.pdf}
+\caption{Four different configurations are shown which help distinguish the HMW phase from the doppler shifted Stark effect. The blue color indicates a positive detuning, while red indicates the beam is negatively detuned.} 
+\label{fig:config}
+\end{figure}
+%*********************************************************
+ 
+
+\vspace{5mm}
+
+There are three experimental obstacles that must be considered when working with this sort of arrangement.  The first of which involves the Lorentz force acting on an atom while entering and traveling inside the beam.  The Lorentz force is found by applying the Euler-Lagrange equation to Eq.\ (\ref{eq:Lagrangian})
+\begin{eqnarray}
+&&m\mathbf{a}=\frac{d}{dt}\left(\mathbf{d}\times\mathbf{B}\right)+\nabla\left[\mathbf{d}\cdot\mathbf{E}-\mathbf{v}\cdot\left(\mathbf{d}\times\mathbf{B}\right)\right] \nonumber \\
+&&=\frac{\partial}{\partial t}\left(\mathbf{d}\times\mathbf{B}\right)+\mathbf{v}\cdot\nabla\left(\mathbf{d}\times\mathbf{B}\right)+\nabla\left[\mathbf{d}\cdot\mathbf{E}-\mathbf{v}\cdot\left(\mathbf{d}\times\mathbf{B}\right)\right] \nonumber \\
+&&=\frac{\partial}{\partial t}\left(\mathbf{d}\times\mathbf{B}\right)+\nabla\left(\mathbf{d}\times\mathbf{B}\right)
+\end{eqnarray}
+Here we have neglected the magnetic moment. Therefore the Lorentz force in the i'th direction is found
+\begin{equation}
+\mathbf{f}_i= \alpha\mathbf{E}\cdot\frac{\partial}{\partial x_i}\mathbf{E}+\alpha\frac{\partial}{\partial t}\left(\mathbf{E}\times\mathbf{B}\right)_i
+\label{lorentz4}
+\end{equation}
+The second term (the R\"{o}ntgen force) does not make an appearance since the electromagnetic field is time independent in this arrangement. 
+Due to the symmetry of the top and bottom acting beams, the first term (the dipole force) cancels out in both arrangements as it is independent of the traveling wave direction.  Arranging the beams in order to achieve this cancellation can be quite challenging. This leads into the second complication which involves the presence of the Stark shift $\frac{1}{2}\alpha E^2$.  This term can be much larger than the HMW term if not dealt with properly.  The interferometer must first be calibrated to eliminate the Stark (dipole force) shift.  At such high intensities however, an expunged output reading does not necessarily imply that both interferometer arms are contributing equally since all phase shift difference of $2N\pi$ will yield the same null result.  Therefore the intensity must be ramped up slowly to assure both beams are equally aligned.  However, both the HMW and Stark effect will be contributing to the total phase.  How then can we separate the two and isolate only the Stark shift?  We do so by varying the initial velocity of the atoms.
+
+The time it takes for an atom to traverse the interferometer is $t_i=L/v_i$.  Here L is the distance between optical gratings.  The total velocity $v$ is the sum of components from the initial velocity $v_i$ and the recoil velocity $v_{\mathrm{rec}}=2\hbar \mathbf{k}_{\mathrm{L}}$.  From this we find the distance traveled by the atom is
+\begin{equation}
+d_i=\frac{L}{v_i}\sqrt{1+\frac{4\hbar^2k_L^2}{m^2}}\approx L\left(1+\frac{2\hbar^2k_{\mathrm{L}}^2}{m^2 v_i^2}\right)
+\end{equation}
+We note that while the time $t_i=L/v_i$ spent in the interaction region is inversely proportional to the initial velocity $v_i$, the distance traveled though $d_i$ grows as the inverse square of $v_i$. Therefore to first order in time, $d_i\approx L$. 
+This behavior is significant since the phase generated by the stark shift
+\begin{equation}
+\phi_{\mathrm{Stark}}=\frac{1}{\hbar}\int\left(\frac{1}{2}\alpha E^2\right)\, dt
+\end{equation}
+depends on the time spent in the interaction region, while the phase generated by the HMW term
+\begin{equation}
+\phi_{\mathrm{HMW}}=-\frac{1}{\hbar}\int\left(\mathbf{d}\times\mathbf{B}\right)\cdot d\mathbf{r}
+\end{equation}
+depend on the distance traveled in the interaction region.  Varying the initial velocity then would leave the HMW term constant, while allowing us to isolate the Stark term.
+The output intensity of the interferometer is of the form
+\begin{equation}
+I(t)=\braket{I}\left[1+\left(\frac{I_{\mathrm{max}}-I_{\mathrm{min}}}{I_{\mathrm{max}}+I_{\mathrm{min}}}\right)\cos\left(C_1t+C_2\right)\right]
+\end{equation}
+Where $C_1$ corresponds to the phase due to the stark effect and $C_2$ with all phases independent of time.  We shall see next that $C_2$ is actually the sum of the HMW phase along with the doppler shifted Stark energy.  Therefore it is not enough to measure $C_2$ in order to observe the HMW effect.    
+
+Taking the Fourier transform, one finds that  
+\begin{eqnarray}
+I(\omega)&=&\braket{I}\sqrt{\frac{\pi}{2}}\left(\frac{I_{\mathrm{max}}-I_{\mathrm{min}}}{I_{\mathrm{max}}+I_{\mathrm{min}}}\right)\cos\left(C_2\right)\delta\left[\omega-C_1\right] \nonumber \\
+&+&\braket{I}\sqrt{\frac{\pi}{2}}\left(\frac{I_{\mathrm{max}}-I_{\mathrm{min}}}{I_{\mathrm{max}}+I_{\mathrm{min}}}\right)\cos\left(C_2\right)\delta\left[\omega+C_1\right] \nonumber \\
+&+&\braket{I}\sqrt{2\pi}\,\delta\left[\omega\right]
+\label{intensity}
+\end{eqnarray}
+Therefore by taking measurements with different initial velocities, one is able to conclusively separate out the phase shifts due to the Stark effect from the HMW phase.
+
+The third issue involves the appearance of the doppler shifted stark effect.   
+\begin{equation}
+\frac{1}{2}\alpha E^2\left(1+\frac{\mathbf{k}_L\cdot \mathbf{v}}{\Delta}\right)
+\label{dopstark}
+\end{equation}
+Eq.\ (\ref{dopstark}) is found by noting that the doppler shift manifests itself through the polarizability \cite{cohentannoudjibook}
+\begin{equation}
+\alpha = \frac{\Delta N |d_{ab}|^2 E_0}{\hbar\left[\Delta^2 +\frac{\Gamma^2}{4}+\frac{\Omega^2}{2}\right]}
+\end{equation}
+Here $d_{ab}$ is the dipole matrix element, $N$ is the density, $\Gamma$ is the line width, $\Delta$ is the detuning and $\Omega$ is the Rabi frequency.  In the large detuning regime, the polarizability is inversely proportional to the detuning.  A moving atom then gives rise to the new doppler shifted detuning 
+\begin{equation}
+\frac{1}{\Delta_{\mathrm{dop}}}= \frac{1}{\omega_a-\left(1+\frac{\mathbf{v}}{c}\right)\omega_L}\approx \frac{1}{\Delta}\left(1+\frac{\mathbf{k}_L\cdot \mathbf{v}}{\Delta}\right)
+\end{equation}
+which yields Eq.\ (\ref{dopstark}).  This term unfortunately produces a sizable phase shift, and behaves remarkably similar to the HMW effect, which makes differentiating it from the HMW phase difficult. As we mentioned previously, the doppler term is grouped up with the HMW term in the phase $C_2$ found in Eq.\ (\ref{intensity}).  
+From Lagrangian (\ref{eq:Lagrangian}) we find the doppler effect gives rise to the term $\frac{1}{2}\alpha E^2 \frac{\mathbf{k}_L\cdot \mathbf{v}}{\Delta}$ and the while the HMW term is $\mathbf{v}\cdot{\alpha \mathbf{E}\times\mathbf{B}}$. Figure \ref{fig:config} show's four configurations with blue (blue arrows) and red (red arrows) detuned beams.  
+
+By using multiple configurations, it is possible to separate the HMW phase.  Going from configuration (A) to (B) only switches the sign of the HMW phase, while the doppler term changes by a factor of $\omega_R/\omega_B$, where the subscripts (R,B) indicate red/blue detuned beams.  In configuration (C), the HMW term has been doubled, while the doppler term has been cut to half that of the HMW term.  Finally in configuration (D) the HMW phase is identically zero, while the doppler term acquires an energy shift of $\frac{1}{2}\alpha E^2 \frac{\left(\mathbf{k}_{LR}-\mathbf{k}_{LB}\right)\cdot \mathbf{v}}{\Delta}$.
+Even though we are only interested in discerning the phase contributions from two possible sources, having multiple configurations are useful in corroborating results along with confirming the absence of the Stark shift
+
+
+
+
+\acknowledgements 
+Discussions with Jacques Vigu\'{e}  are gratefully acknowledged. 
+
+\begin{thebibliography}{8}
+
+
+
+
+\bibitem{mckellar93}{X. G. He and B. H. J. McKellar, Phys. Rev. A \textbf{47} 3424 (1993).}
+
+\bibitem{wilkens94}{M. Wilkens, Phys. Rev. Lett. \textbf{72}, 5 (1994).}
+
+\bibitem{aharanov59}{Y. Aharanov and D. Bohm, Phys. Rev. \textbf{115}, 485 (1959).}
+
+\bibitem{aharanov84}{Y. Aharanov and A. Casher, Phys. Rev. Lett. \textbf{53}, 319 (1984).}
+
+\bibitem{dowling99}{J. P. Dowling, C. P. Williams, and J. D. Franson,
+Phys. Rev. Lett. \textbf{83}, 2486 (1999).}
+
+\bibitem{vaidmann}{L. Vaidman, Phys. Rev. A \textbf{86} 040101 (2012).}
+
+\bibitem{wei95}{H. Wei, R. Han, and X. Wei, Phys. Rev. Lett. \textbf{75}, 2071 (1995).}
+
+\bibitem{chambers60}{R. Chambers, Phys. Rev. Lett. \textbf{5}, 3 (1960).}
+
+\bibitem{tonomura86}{A. Tonomura, N. Osakabe, T. Masuda, T. Kawasaki, J. Endo, S. Yano and H. Yamada, Phys. Rev. Lett. \textbf{56}, 792 (1986).}
+
+\bibitem{olariu85}{S. Olariu and I. Iovitzu Popescu, Rev. Mod. Phys. \textbf{57}, 339 (1985).}
+
+\bibitem{peshkin89}{M. Peshkin and A. Tonomura, \textit{The Aharanov-Bohm Effect} (Springer-Verlag, New York, 1989).}
+
+\bibitem{cimmino89}{A. Cimmino, G. I. Opat, A. G. Klein, H. Kaiser, S. A. Werner, M. Arif, and R. Clothier, Phys. Rev. Lett. \textbf{63}, 380 (1989).}
+
+\bibitem{sangster93}{K. Sangster, E. A. Hinds, S. M. Barnett, and E. Riis, Phys. Rev. Lett. \textbf{71}, 3641 (1993); K. Sangster, E. A. Hinds, S. M. Barnett, E. Riis, and A. G. Sinclair, Phys. Rev. A \textbf{51}, 1776 (1995).}
+
+\bibitem{zeiske95}{K. Zeiske, G. Zinner, F. Riehle, and J. Helmcke, Appl. Phys. B
+\textbf{60}, 205 (1995).}
+
+\bibitem{gorlitz95}{A. G\"{o}rlitz, B. Schuh, and A. Weis, Phys. Rev. A \textbf{51}, R4305 (1995).}
+
+\bibitem{yanagimachi02}{S. Yanagimachi, M. Kajiro, M. Machiya, and A. Morinaga,
+Phys. Rev. A 65, 042104 (2002).}
+
+\bibitem{vigue1}{S. Lepoutre, A. Gauguet, G. Tr\'{e}nec, M. B\"{u}chner, and J. Vigu\'{e}
+Phys. Rev. Lett. \textbf{109}, 120404 (2012).}
+
+\bibitem{vigue2}{S. Lepoutre, A. Gauguet, M. B\"{u}chner, and J. Vigu\'{e}, Phys. Rev. Lett. \textbf{111}, 030401 (2013).}
+
+\bibitem{vigue3}{S. Lepoutre, A. Gauguet, M. B\"{u}chner, and J. Vigu\'{e}, Phys. Rev. A \textbf{88}, 043627 (2013).}
+
+\bibitem{vigue4}{S. Lepoutre, J. Gillot, A. Gauguet, M. B\"{u}chner, and J. Vigu\'{e}
+Phys. Rev. A \textbf{88}, 043628 (2013).}
+
+\bibitem{cohentannoudjibook}{C. Cohen-Tannoudji, J. Dupont-Roc, and G. Grynberg, \textit{Atom-Photon Interactions} (Wiley, New York, 1989).}
+
+\bibitem{Peierls91}{R. Peierls, \textit{More Surprises in Theoretical Physics}, (Princeton Univ. Press, New York, 1991).}
+
+\bibitem{Brevik}{I. Brevik, Phys. Rep. \textbf{52}, 133 (1979).}
+
+\bibitem{pfeifer07}{R. N. C. Pfeifer, T. A. Nieminen, N. R. Heckenberg, and H. Rubinsztein-Dunlop, Rev. Mod. Phys. \textbf{79}, 1197 (2007).}
+
+\bibitem{leonhardt06}{U. Leonhardt, Nature \textbf{444}, 823 (2006).}
+
+\bibitem{loudon11}{S. M. Barnett and R. Loudon, Phil. Trans. R. Soc. A,  \textbf{368} (2011).}
+
+\bibitem{pauli}{W. Pauli, \textit{Theory of Relativity} (Dover, New York, 1981), p 110.}
+
+\bibitem{Gordon73}{J. P. Gordon, Phys. Rev. A \textbf{8}, 14 (1973). }
+
+\bibitem{chiao}{J. C. Garrison and R. Y. Chiao, Phys. Rev. A \textbf{70}, 053826 (2004).}
+
+\bibitem{Loudon05}{R. Loudon, S. M. Barnett and C. Baxter, Phys. Rev. A \textbf{71}, 063802 (2005).}
+
+\bibitem{ketterle}{G. K. Campbell, A. E. Leanhardt, J. Mun, M. Boyd, E. W. Streed, W. Ketterle, and D. E. Pritchard, Phys. Rev. Lett. \textbf{94}, 170403 (2005).}
+
+\bibitem{feng}{W. She, J. Yu, and R. Feng, Phys. Rev. Lett. \textbf{101}, 243601 (2008).}
+
+\bibitem{mansuripur}{M. Mansuripur and A. R. Zakharian, Phys. Rev. E \textbf{79}, 026608 (2009).}
+
+\bibitem{hinds09}{E. Hinds and S. M. Barnett, Phys. Rev. Lett. \textbf{102}, 050403 (2009).}
+
+\bibitem{barnett10}{S. M. Barnett, Phys. Rev. Lett. \textbf{104}, 070401 (2010).}
+
+\bibitem{lembessis}{V. E. Lembessis, M. Babiker, C. Baxter, and R. Loudon, Phys. Rev. A. \textbf{48}, 2 (1993)}
+
+
+\bibitem{pritchard}{S. Gupta, A. E. Leanhardt, A. D. Cronin, and D. E. Pritchard,
+C.R. Acad. Sci. IV-Phys. 2, 479 (2001).}
+
+\bibitem{meystre}{P. Meystre, Atom Optics (Springer-Verlag, New York, 2001).}
+
+\bibitem{steck}{Daniel A. Steck, "Rubidium 87 D line Data", 2001}
+
+\bibitem{Berry}{M. V. Berry and Pragya Shukla, J. Phys. A \textbf{46}, 422001 (2013).}
+
+\bibitem{Nelson}{D.F. Nelson, Phys. Rev. A 44, 3985 (1991).}
+
+\bibitem{Rikken}{G. L. J. A. Rikken, and B. A. van Tiggerlen, Phys. Rev. Lett. 108, 230402 (2012).}
+
+
+\bibitem{lang73}{R. Lang, M. O. Scully and W. E. Lamb, Phys. Rev. A \textbf{7}, 1788 (1973).}
+
+\bibitem{domokos08}{J. K. Asboth, H. Ritsch, and P. Domokos, Phys. Rev. A \textbf{77}, 063424 (2008).}
+
+\bibitem{griffiths}{David J. Griffiths, \textit{Introduction to Electrodynamics} Third Edition (Prentice Hall, New Jersey, 1999).}
+
+\bibitem{Hoyt}{C.W. Hoyt, Z.W. Barber, C.W. Oates, T.M. Fortier, S.A. Diddams, and L. Hollberg,Phys. Rev. Lett. \textbf{95}, 083003 (2005).}
+
+\bibitem{phillips}{M. F. Andersen, C. Ryu, Pierre Clad\'{e}, Vasant Natarajan, A. Vaziri, K. Helmerson, and W.D. Phillips,Phys. Rev. Lett. \textbf{97}, 170406 (2006).}
+
+\bibitem{boshier}{C. Ryu, K. C. Henderson, and M. Boshier, New J. Phys \textbf{16}, 010346 (2014).}
+
+\bibitem{us}{N. Miladinovic, F. Hasan, N. Chisholm, E. A. Hinds, and D. H. J. O'Dell, Phys. Rev. A \textbf{84}, 043822 (2011).}
+
+\bibitem{preble07}{S. F. Preble, Q. Xu, and M. Lipson, Nat. Photon. \textbf{1}, 293 (2007).}
+
+\bibitem{Dalibard}{Fabrice Gerbier, and Jean Dalibard, \textit{Gauge fields for ultracold atoms in optical superlattices}, New Journal of Physics. \textbf{12}, 033007 (2010)}
+
+\bibitem{Babson09}{David Babson, Stephen P. Reynolds, Robin Bjorkquist, and David j. Griffiths, American association of physics teachers (2009)}
+
+\bibitem{loudon2}{M. Padgett, S. M. Barnett and R. Loudon, J. Mod. Opt.\textbf{50}, 1555 (2003).}
+
+\bibitem{loudon3}{S. M. Barnett and R. Loudon, J. Phys. B. \textbf{39} ,S671 (2006).}
+
+\bibitem{einstein}{A. Einstein, “The principle of conservation of the centre of gravity movement and the inertia of energy,” Ann. Phys. \textbf{20}, 627–633 (1906).}
+
+\bibitem{Leonhardt2}{Li Zhang, Weilong She, Nan Peng and Ulf Leonhardt, New J. Phys \textbf{17}, 053035 (2015).}
+
+\bibitem{spectroscopy}{R.D. Van Zee, and J.P. Looney, \textit{Cavity-Enhanced Spectroscopy} (Academic Press, 2002).}
+
+\bibitem{cohen-tannoudji-interferometry}{Pippa Storey, Claude Cohen-Tannoudji. The Feynman path integral approach to atomic in-
+terferometry. A tutorial. Journal de Physique II, EDP Sciences, 1994, 4 (11), pp.1999-2027.}
+
+\bibitem{Abraham2}{Sharon A. Kennedy, Matthew J. Szabo, Hilary Teslow, James Z. Porterfield, and E. R. I. Abraham, Phys. Rev. A. \textbf{66}, 043801 (2002).}
+
+\bibitem{Allen}{L. Allen, M. W. Beijersbergen, R. J. C. Spreeuw and J.P. Woerdman, Phys. Rev. A. \textbf{45}, 11 (1992).}
+
+\bibitem{Willke}{L. Carbone, C. Bogan, P. Fulda, A. Freise, and B. Willke2, Phys. Rev. Lett. \textbf{110}, 251101 (2013).}
+
+\bibitem{Phillips}{M. F. Andersen, C. Ryu, Pierre Clade, Vsant Natarajan, A. Vaziri, K. Helmerson, and W. D. Phillips, Phys. Rev. Lett. \textbf{97}, 170406 (2006).}
+
+\bibitem{padgett}{M. J. Padgett, L. Allen, Optical and quantum electronics, \textbf{31} (1999)}
+
+\bibitem{campbell}{B. Hester, G. K. Campbell, C. LopezMariscal,
+C. L. Filguiera, R. Huschka, N. J. Halas and K. Helmerson, Rev. Sci. Instrum. \textbf{83}, 043114}
+
+\bibitem{wilkens2}{M. Wilkens, Phys. Rev. A. \textbf{48}, 6 (1994).}
+
+\bibitem{kasevich}{Chiow S.w., Kovachy T., Chien H.C. and Kasevich M. A., Phys. Rev. Lett., \textbf{107} (2011) 130403.}
+
+\bibitem{courteille}{D. Kruse, C. von Cube, C. Zimmermann, and Ph.W. Courteille, Phys. Rev. Lett., \textbf{91} (2003) 183601.}
+
+\bibitem{hemmerich}{Th. Elsässer, B. Nagorny, and A. Hemmerich, Phys. Rev. A., \textbf{69} (2004) 033403.}
+
+
+\end{thebibliography}
+
+
+\end{document}

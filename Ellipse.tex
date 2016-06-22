@@ -1,0 +1,140 @@
+\documentclass[aps,pra,showpacs,twocolumn]{revtex4}
+\usepackage{graphicx}
+\usepackage{epstopdf} 
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
+
+
+\begin{document}
+
+\date{\today}
+\author{N. Miladinovic}
+\affiliation{Department of Physics and Astronomy, McMaster University, 1280 Main St.\ W., Hamilton, ON, L8S 4M1, Canada}
+\author{D. H. J. O'Dell}
+\affiliation{Department of Physics and Astronomy, McMaster University, 1280 Main St.\ W., Hamilton, ON, L8S 4M1, Canada}
+
+\title{Wave function in an elliptical ring trap}
+
+\begin{abstract}
+We study an ellipse in polar coordinates, calculate its arc length, and then describe the wave function for a particle living on an ellipse. 
+\end{abstract}
+
+%\pacs{03.75.Lm, 03.65.Ta, 67.85.Pq, 05.30.Rt}
+
+\maketitle
+
+\section{Introduction}
+The equation for an ellipse in cartesian coordinates is
+\begin{equation}
+\frac{x^2}{a^2}+\frac{y^2}{b^2}=1
+\end{equation}
+where $a$ and $b$ are the semimajor and semiminor axes, respectively, so that $a \ge b$. The eccentricity is defined as 
+\begin{equation}
+\epsilon \equiv \sqrt{1-b^2/a^2} 
+\end{equation}
+and lies in the range $0 \le \epsilon <1$.
+An ellipse can be described as a parametric curve by letting
+\begin{eqnarray}
+x & = & a \cos u \\
+y & = & b \sin u
+\end{eqnarray}
+where $0 \le u \le 2 \pi $. Note that $u$, the distance around the ellipse, is \textbf{not} the polar angle $\theta$, which is instead related to the cartesian coordinates by
+\begin{eqnarray}
+x & = & r \cos \theta \\
+y & = & r \sin \theta . 
+\end{eqnarray}
+The relation between $u$ and $\theta$ is given by
+\begin{equation}
+ \theta = \arctan \frac{y}{x} = \arctan \left( \frac{b}{a} \tan u \right) .
+\end{equation}
+The differential arc length is given by
+\begin{equation}
+ds = \sqrt{\left( \frac{dx}{du}\right)^2+\left( \frac{dy}{du}\right)^2} du
+\end{equation}
+The arc length (measured from the x-axis) is therefore 
+\begin{eqnarray}
+s(u) & = & \int_{0}^{u} \sqrt{a^2 \sin^{2} u' + b^2 \cos^{2} u' }  \ du' \\
+& = & b \int_{0}^{u} \sqrt{1- \left( 1- \frac{a^2}{b^2} \right) \sin^{2} u'  }  \ du' \\
+& = & b \  \mathrm{E} \bigg( u  \bigg \vert 1- \frac{a^2}{b^2} \bigg) = a \  \mathrm{E} \bigg( u  \bigg \vert 1- \frac{b^2}{a^2} \bigg)
+\end{eqnarray}
+where $\mathrm{E} (\phi \vert  m)$ is the elliptic integral of the 2nd kind (available in \textit{Mathematica}). The length of the perimeter of the ellipse is given by putting $u=2 \pi$. This can also be written as four times one quadrant
+\begin{equation}
+L= 4 b \  \mathrm{E} \bigg( \pi/2  \bigg \vert 1- \frac{a^2}{b^2} \bigg) = 4 b \  \mathrm{E} \bigg(  1- \frac{a^2}{b^2} \bigg)
+\end{equation}
+where $E(m)$ is the complete elliptic integral of the second kind.
+
+The radius of the ellipse as a function of $\theta$ is given by 
+\begin{equation}
+r^2=\frac{a^2 b^2}{b^2 \cos^{2} \theta + a^2 \sin^{2} \theta} \ .
+\end{equation}
+Just as useful is the radius as a function of $u$, which is given by
+\begin{equation}
+r^2=x^2+y^2=a^2 \cos^2 u + b^2 \sin^2 u
+\end{equation}
+or in other words
+\begin{equation}
+r=a\sqrt{1-(1-b^2/a^2) \sin^2 u}=a \sqrt{1-\epsilon^2 \sin^2 u} \ .
+\end{equation}
+
+A single-valued wave function on the ellipse can be written as a Fourier series
+\begin{equation}
+\psi(u)= \sum_{n} A_{n} \frac{e^{i k_{n} s(u)}}{\sqrt{L}} 
+\label{eq:wf}
+\end{equation}
+where $k_{n}= 2 \pi n / L$.  Note the normalization here is
+\begin{equation}
+\int_0^L\frac{e^{i (k_{n}-k_{m}) s(u)}}{L}\:ds(u)=\begin{cases}
+1 & n=m\\
+0 & n\ne m \ . \end{cases}
+\end{equation}
+ When inserted in the Schr\"{o}dinger equation, we need to take the derivative with respect to the arc length $s$
+\begin{equation}
+\left(-\frac{\hbar^2}{2m} \frac{d^2}{d s^2} +V(u)\right) \psi = E \psi \ .
+\end{equation}
+This is due to the fact that in elliptic coordinates the scale factor, which measures the length of the basis vector, is given by
+\begin{equation}
+h_{\mu}=h_{\nu}=\sqrt{a^2 \mathrm{\sin^{2}} u + b^2 \mathrm{\cos^{2}} u}
+\end{equation}
+where $u$ and $\nu$ are the elliptic coordinates. We can write the Laplacian in elliptic coordinates as
+\begin{equation}
+\frac{1}{a^2 \mathrm{\sin^{2}} u + b^2 \mathrm{\cos^{2}} u}\:\frac{d^2}{d u^2}
+\end{equation}
+Now we can see why the derivative with respect to the arc length is correct as
+\begin{eqnarray}
+\frac{d^2}{d s^2}=\frac{d u^2}{d s^2}\frac{d^2 }{d u^2}&=&\frac{1}{a^2 \mathrm{\sin^{2}} u + b^2 \mathrm{\cos^{2}} u}\:\frac{d^2 }{d u^2} \nonumber \\
+&=&\frac{1}{a^2 \left(1- \epsilon^2\mathrm{\cos^{2}} u\right)}\:\frac{d^2 }{d u^2}
+\end{eqnarray}
+Let us now look at the Hamiltonian for a particle living on an ellipse in an electromagnetic field of the form
+\begin{equation}
+\mathrm{E}(r)= \hbar E_0 r e^{\frac{-2r^2}{w_0^2}} 
+\end{equation}
+where $E_0$ is proportional to the intensity of the laser field, and $w_0$ is the beam waist. The Schr\"{o}dinger equation is
+\begin{equation}
+i\hbar\frac{\partial}{\partial t}\psi=-\frac{\hbar^2}{2m} \left(\frac{d}{d s}+i E_0 r e^{\frac{-2r^2}{w_0^2}} \right)^2 \psi 
+\end{equation}
+Let's expand out the Hamiltonian 
+\begin{eqnarray}
+&&\left(\frac{d}{d s}-i E_0 r e^{\frac{-2r^2}{w_0^2}} \right)^2\psi=  \\ 
+&&\frac{d^2}{d s^2}\psi +iE_0e^{\frac{-2r^2}{w_0^2}}\frac{\epsilon^2 \mathrm{\sin{2u}}}{2\sqrt{1-\epsilon^2 \cos^2 u}\sqrt{1-\epsilon^2 \sin^2 u}}\psi \nonumber \\
+&&+iE_0e^{\frac{-2r^2}{w_0^2}}\frac{2a^2\epsilon^2 \sin{2u}\sqrt{1-\epsilon^2 \sin^2 u}}{\sqrt{1-\epsilon^2 \cos^2 u}}\psi \nonumber \\
+&& -i2E_0\frac{-2r^2}{w_0^2}r\frac{d\psi}{ds}-E_0^2\frac{-4r^2}{w_0^2}r^2\psi 
+\end{eqnarray}
+We now plug in $\psi(u)=\sum_{n} A_{n} \frac{e^{i k_{n} s(u)}}{\sqrt{L}}$ and integrate out the $A_m$ term by multiply the Schr\"{o}dinger equation by $A_{m} \frac{e^{-i k_{n} s(u)}}{\sqrt{L}}$ and integrating with respect to $s(u)$.  This gives 
+\begin{eqnarray}
+&&i\left(\frac{2m}{\hbar}\right)\dot{A_m}=+k^2\frac{A_m}{L} \nonumber \\
+&& -\sum_m A_m\frac{i E_0}{L} \int_0^{2\pi} e^{\frac{-2r^2}{w_0^2}}\frac{a\epsilon^2 \sin{2u}}{2\sqrt{1-\epsilon^2 \sin^2 u}}e^{ik(n-m)s(u)/L}\:du \nonumber \\
+&&-\sum_m A_m \frac{i E_0}{L}\int_0^{2\pi} e^{\frac{-2r^2}{w_0^2}}\left(\frac{2ra^3\epsilon^2 \sin{2u}}{w_0^2}\right)e^{ik(n-m)s(u)/L}\:du \nonumber \\
+&&-\sum_m A_m \frac{2kE_0}{L}\int_0^{2\pi} e^{\frac{-2r^2}{w_0^2}}re^{ik(n-m)s(u)/L}\:du \nonumber \\
+&&+\sum_m A_m\frac{E_0^2}{L}\int_0^{2\pi}e^{\frac{-4r^2}{w_0^2}}ar^2\sqrt{1-\epsilon^2 \cos^2 u}e^{ik(n-m)s(u)/L}\:du \nonumber \\
+\end{eqnarray}
+where $r=a \sqrt{1-\epsilon^2 \mathrm{\sin^2} u} $ and $k=2m\pi/L$.  Note we have made use of the change of variable $ds \rightarrow  a\sqrt{1-\epsilon^2 \cos^2 u}du$ in the integral which also changed the limits of integration from  $(0,L)$ to $(0,2\pi)$.
+Now we wish to write the Hamiltonian in terms of the basis states $\frac{e^{-i k_{n} s(u)}}{\sqrt{L}}$.  This is given by
+\begin{eqnarray}
+&&\left(\frac{2m}{\hbar^2}\right)H_{n,m}=k^2\delta_{n,m} \nonumber \\
+&& -\frac{i E_0}{L} \int_0^{2\pi} e^{\frac{-2r^2}{w_0^2}}\frac{a\epsilon^2 \sin{2u}}{2\sqrt{1-\epsilon^2 \sin^2 u}}e^{ik(n-m)s(u)/L}\:du \nonumber \\
+&&-\frac{i E_0}{L}\int_0^{2\pi} e^{\frac{-2r^2}{w_0^2}}\left(\frac{2ra^3\epsilon^2 \sin{2u}}{w_0^2}\right)e^{ik(n-m)s(u)/L}\:du \nonumber \\
+&&-\frac{2kE_0}{L}\int_0^{2\pi} e^{\frac{-2r^2}{w_0^2}}re^{ik(n-m)s(u)/L}\:du \nonumber \\
+&&+\frac{E_0^2}{L}\int_0^{2\pi}e^{\frac{-4r^2}{w_0^2}}ar^2\sqrt{1-\epsilon^2 \cos^2 u}e^{ik(n-m)s(u)/L}\:du \nonumber \\
+\end{eqnarray}
+\end{document}

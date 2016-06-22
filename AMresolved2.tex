@@ -1,0 +1,601 @@
+\documentclass[twocolumn,english,pra,aps,superscriptaddress,floatfix]{revtex4-1}
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{amssymb}
+%\usepackage{esint}
+\usepackage{bm}
+\usepackage{latexsym}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+\@ifundefined{textcolor}{}
+{%
+ \definecolor{BLACK}{gray}{0}
+ \definecolor{WHITE}{gray}{1}
+ \definecolor{RED}{rgb}{1,0,0}
+ \definecolor{GREEN}{rgb}{0,1,0}
+ \definecolor{BLUE}{rgb}{0,0,1}
+ \definecolor{CYAN}{cmyk}{1,0,0,0}
+ \definecolor{MAGENTA}{cmyk}{0,1,0,0}
+ \definecolor{YELLOW}{cmyk}{0,0,1,0}
+ }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+%\numberwithin{equation}{section}
+
+\makeatother
+
+\usepackage{babel}
+\usepackage{braket}
+\begin{document}
+
+
+
+\author{N. Miladinovic}
+\affiliation{Department of Physics and Astronomy, McMaster University, 1280 Main
+St.\ W., Hamilton, ON, L8S 4M1, Canada} 
+\author{D.\ H.\ J.\ O'Dell}
+\affiliation{Department of Physics and Astronomy, McMaster University, 1280 Main
+St.\ W., Hamilton, ON, L8S 4M1, Canada}
+
+\title{Abraham-Minkowski and the HMW phase}
+
+\begin{abstract}
+\label{sec:abstract}
+We show that Abraham $P_A=D\times B$ and the Minkowski $P_M=\frac{1}{c^2}E\times H$ electromagnetic momentum are both correct.  They are linked to two different representations of the Schr\"{o}dinger equation which differ from each other through a phase factor given by the HMW topological phase.
+\end{abstract}
+
+\pacs{42.50.Ex, 42.50.Pq, 42.60.Da, 42.82.Et, 03.67.Lx}
+
+\maketitle
+
+\section{The Lorentz Force}
+\label{sec:lorentz}
+We begin with the Lorentz force acting on a linear medium due to an electromagnetic plane wave of the form $\mathbf{E}(\mathbf{x},t)=\mathbf{\mathcal{E}}(\mathbf{x},t)\cos{(\omega t -\mathbf{k\cdot x})}$. In this exposition, we will be making use of Maxwell's general equations:
+\begin{eqnarray}
+&&\mathrm{\mathbf{\nabla}\cdot\mathbf{E}=\frac{1}{\epsilon_0}\rho} \\
+&&\mathrm{\mathbf{\nabla}\times\mathbf{E}=-\frac{\partial \mathbf{B}}{\partial t}} \\
+&&\mathrm{\mathbf{\nabla}\cdot\mathbf{B}=0} \\
+&&\mathrm{\mathbf{\nabla}\times\mathbf{B}=\mu_0\mathbf{J}+\mu_0 \epsilon_0\frac{\partial \mathbf{E}}{\partial t}}
+\end{eqnarray}
+Along with Maxwell's equations in matter:
+\begin{eqnarray}
+&&\mathrm{\mathbf{\nabla}\cdot\mathbf{D}=\rho_f} \\
+&&\mathrm{\mathbf{\nabla}\times\mathbf{E}=-\frac{\partial \mathbf{B}}{\partial t}} \\
+&&\mathrm{\mathbf{\nabla}\cdot\mathbf{B}=0} \\
+&&\mathrm{\mathbf{\nabla}\times\mathbf{H}=\mathbf{J}_f+\frac{\partial \mathbf{D}}{\partial t}}
+\end{eqnarray}
+
+The general Lorentz force is given by
+\begin{eqnarray}
+&&\mathrm{\mathbf{f}_i=\rho \mathbf{E}_i+\left(\mathbf{J} \times \mathbf{B}\right)_i}\nonumber \\
+&&=\mathrm{\left(\epsilon_0\mathbf{\nabla} \cdot \mathbf{E}\right)\mathbf{E}_i+\left(\frac{1}{\mu_0}\left(\mathbf{\nabla}\times \mathbf{B}\right)\times\mathbf{B}-\epsilon_0\frac{\partial \mathbf{E}}{\partial t} \times \mathbf{B}\right)_i}
+\end{eqnarray}
+Here we have made use of Eq.\ (1) and Eq.\ (4) in the second line.  Using the vector identity $\mathbf{A}\times\left(\mathbf{\nabla}\times \mathbf{A}\right)=\frac{1}{2}\mathbf{\nabla}A^2-\left(\mathbf{A}\cdot\mathbf{\nabla}\right)\mathbf{A}$, along with Eq.\ (3) we can rewrite this as
+\begin{eqnarray}
+&&\mathrm{\mathbf{f}_i=\epsilon_0\left(\mathbf{\nabla} \cdot \mathbf{E}\right)\mathbf{E}_i-\frac{1}{2\mu_0}\mathbf{\nabla}B^2+\frac{1}{\mu_0}\left(\mathbf{B}\cdot\mathbf{\nabla}\right)\mathbf{B}_i} \nonumber \\
+&&\mathrm{-\epsilon_0\frac{\partial}{\partial t} \left(\mathbf{E}\times \mathbf{B}\right)_i-\frac{1}{2}\epsilon_0\mathbf{\nabla}E^2+\epsilon_0\left(\mathbf{E}\cdot\mathbf{\nabla}\right)\mathbf{E}_i}
+\end{eqnarray}
+
+For a plane wave $\mathbf{E}(\mathbf{x},t)=\mathbf{\mathcal{E}}(\mathbf{x},t)\cos{(\omega t -\mathbf{k\cdot x})}$ the first, third, and last term will drop out since the electromagnetic field doesn't have a longitudinal component.  We are therefore left with
+\begin{equation}
+\mathrm{\mathbf{f}_i=-\frac{1}{2}\mathbf{\nabla}\left(\epsilon_0 E^2+\frac{1}{\mu_0}B^2\right)-\epsilon_0\frac{\partial}{\partial t} \left(\mathbf{E}\times \mathbf{B}\right)_i}
+\end{equation}
+
+Let's now do the same thing, but instead consider the Lorentz force $\tilde{\mathbf{f}}$ acting on only the free charges in the material.  Following the same procedure used for the general Lorentz force
+
+\begin{eqnarray}
+&&\mathrm{\tilde{\mathbf{f}}_i=\rho_f \mathbf{E}_i+\left(\mathbf{J_f} \times \mathbf{B}\right)_i}\nonumber \\
+&&=\mathrm{\left(\mathbf{\nabla} \cdot \mathbf{D}\right)\mathbf{E}_i+\left(\left(\mathbf{\nabla}\times \mathbf{H}\right)\times\mathbf{B}-\frac{\partial \mathbf{D}}{\partial t} \times \mathbf{B}\right)_i} \nonumber \\
+&&\mathrm{=\left(\mathbf{\nabla} \cdot \mathbf{D}\right)\mathbf{E}_i-\frac{1}{2}\mathbf{\nabla}\left(\mathbf{H}\cdot\mathbf{B}\right)+\left(\mathbf{H}\cdot\mathbf{\nabla}\right)\mathbf{B}_i} \nonumber \\
+&&\mathrm{-\frac{\partial}{\partial t} \left(\mathbf{D}\times \mathbf{B}\right)_i-\frac{1}{2}\mathbf{\nabla}\left(\mathbf{D}\cdot\mathbf{E}\right)+\left(\mathbf{D}\cdot\mathbf{\nabla}\right)\mathbf{E}_i}
+\end{eqnarray}
+Once again, we drop the first, third, and last term due to electromagnetic plane wave being longitudinal.  We then arrive at
+\begin{equation}
+\mathrm{\tilde{\mathbf{f}}_i=-\frac{1}{2}\mathbf{\nabla}\left(\mathbf{D}\cdot\mathbf{E}+\mathbf{H}\cdot\mathbf{B}\right)-\frac{\partial}{\partial t} \left(\mathbf{D}\times \mathbf{B}\right)_i}
+\end{equation}
+What happens now if we wish to find the Lorentz force $\check{\mathbf{f}}$ acting on the bound charges?  
+\begin{eqnarray}
+&&\mathrm{\check{\mathbf{f}}_i=\rho_b \mathbf{E}_i+\left(\mathbf{J_b} \times \mathbf{B}\right)_i}\nonumber \\
+&&=-\mathrm{\left(\mathbf{\nabla} \cdot \mathbf{P}\right)\mathbf{E}_i+\left(\left(\mathbf{\nabla}\times \mathbf{M}\right)\times\mathbf{B}+\frac{\partial \mathbf{P}}{\partial t} \times \mathbf{B}\right)_i} \nonumber \\
+&&\mathrm{=-\left(\mathbf{\nabla} \cdot \mathbf{P}\right)\mathbf{E}_i-\frac{1}{2}\mathbf{\nabla}\left(\mathbf{M}\cdot\mathbf{B}\right)+\left(\mathbf{M}\cdot\mathbf{\nabla}\right)\mathbf{B}_i} \nonumber \\
+&&\mathrm{+\frac{\partial}{\partial t} \left(\mathbf{P}\times \mathbf{B}\right)_i+\frac{1}{2}\mathbf{\nabla}\left(\mathbf{P}\cdot\mathbf{E}\right)-\left(\mathbf{P}\cdot\mathbf{\nabla}\right)\mathbf{E}_i}
+\end{eqnarray}
+Dropping the first, third and last term again yields
+\begin{equation}
+\mathrm{\check{\mathbf{f}}_i=\frac{1}{2}\mathbf{\nabla}\left(\mathbf{P}\cdot\mathbf{E}-\mathbf{M}\cdot\mathbf{B}\right)+\frac{\partial}{\partial t} \left(\mathbf{P}\times \mathbf{B}\right)_i}
+\end{equation}
+We see that $\mathbf{f}=\tilde{\mathbf{f}}+\check{\mathbf{f}}$.  What does tell us about the Abraham-Minkowski momenta?
+Consider the case in which $M=0$. The Lorentz force equations Eq.\ (11), Eq.\ (13), and Eq.\ (15) tell us that the force due to the electromagnetic momentum carried by the plane waves is
+\begin{equation}
+\mathrm{-\epsilon_0\frac{\partial}{\partial t} \left(\mathbf{E}\times \mathbf{B}\right)_i=-\frac{\partial}{\partial t} \left(\mathbf{D}\times \mathbf{B}\right)_i+\frac{\partial}{\partial t} \left(\mathbf{P}\times \mathbf{B}\right)_i}
+\end{equation}
+or
+\begin{equation}
+\mathrm{\frac{\partial}{\partial t}\mathbf{S}_{Min}=\frac{\partial}{\partial t}\mathbf{S}_{Abr}+\frac{\partial}{\partial t}\left(\mathbf{P}\times \mathbf{B}\right)}
+\end{equation}
+We have arrived at the well known relationship between the Abraham and Minkowski momentum 
+\begin{equation}
+\mathrm{\mathbf{S}_{Min}=\mathbf{S}_{Abr}+\left(\mathbf{P}\times \mathbf{B}\right)}
+\end{equation}
+The derivation gives some insight into the partitioning of electromagnetic momenta into the Abraham and the Minkowski representations.  To better understand the significance of each term let's first consider the energy contained in a linear dielectric medium.  The work required to assemble the dielectric system includes 3 different terms.  The first is the work required to bring in all the free charges from infinity and assemble them in the proper position.  The second term is the work required to assemble the bound charges.  The third term is the work required to stretch the polarized atoms - also known as the Stark energy.  This total energy is given by
+\begin{equation}
+\mathrm{\frac{1}{2}\left(\mathbf{D}\cdot\mathbf{E}+\mathbf{H}\cdot\mathbf{B}\right)}
+\end{equation}
+If instead we are interested in the energy required in assembling only the free and the bound charges in the system piece by piece, the energy is given by 
+\begin{equation}
+\mathrm{\frac{1}{2}\left(\epsilon_0 E^2+\frac{1}{\mu_0}B^2\right)}
+\end{equation}
+Therefore we see that  Eq.\ (11) describes the force on the material as a result of free and bound charges.   Eq.\ (15) on the other hand includes the force due to the polarized fields.
+
+
+
+\section{The Lagrangian}
+\label{sec:Lagrange}
+
+We begin with the Lagrangian for a polarizable, atom interacting with an external electromagnetic field in the lab frame \cite{wei95}
+\begin{equation}
+\mathrm{L=\frac{1}{2}\mathrm{M}\mathbf{v}^2 + \frac{1}{2}\alpha E^2+\mathbf{m} \cdot B +\int\left(\frac{\epsilon_0}{2}E^2+ \frac{1}{2\mu_0}B^2\right)\,dV} \nonumber \\
+\label{lagrangian1}
+\end{equation}
+Where $\alpha$ is the atomic polarizability, and $m$ is the magnetic moment.  In the atom's reference frame the Lorentz transformed fields are $\bar{\mathbf{E}}=\mathbf{E}+\mathbf{v}\times\mathbf{B}$ and $\bar{\mathbf{B}}=\mathbf{B}-\epsilon_0\mu_0\left(\mathbf{v}\times\mathbf{E}\right)$ (to first order in v/c). Switching into the atom's reference frame the Lagrangian becomes
+\begin{eqnarray}
+\mathrm{L}&=&\mathrm{\frac{1}{2}\mathrm{M}\mathbf{v}^2 + \frac{1}{2}\alpha\left(\mathbf{E}+\mathbf{v}\times\mathbf{B}\right)^2 +\mathbf{m}\cdot\left(\mathbf{B}-\epsilon_0\mu_0\left(\mathbf{v}\times\mathbf{E}\right)\right) } \nonumber \\
+&+&\mathrm{\int\left(\frac{\epsilon_0}{2}\left(\mathbf{E}+\mathbf{v}\times\mathbf{B}\right)^2+ \frac{1}{2\mu_0}B^2\right)\,dV} 
+\label{lagrangian2}
+\end{eqnarray}
+Expanding this and droppings terms of order $\mathrm{v^2/c^2}$ gives
+\begin{eqnarray}
+\mathrm{L}&=&\mathrm{\frac{1}{2}\mathrm{M}\mathbf{v}^2 + \frac{1}{2}\alpha E^2 +\mathbf{m}\cdot\mathbf{B}}\nonumber \\
+&+&{\int\left(\frac{\epsilon_0}{2}E^2+ \frac{1}{2\mu_0}B^2\right)\,dV+\mathbf{v}\cdot\left(\frac{\mathbf{m}\times\mathbf{E}}{c^2}\right)} \nonumber \\
+&+&\mathrm{-\mathbf{v}\cdot\left(\alpha\mathbf{E}\times\mathbf{B}\right)-\epsilon_0\int\mathbf{v}\cdot\left(\mathbf{E}\times\mathbf{B}\right)\,dV} 
+\label{lagrangian3}
+\end{eqnarray}
+The last 2 terms may be written as
+\begin{equation}
+\mathrm{-\int\mathbf{v}\cdot\left(\mathbf{D}\times\mathbf{B}\right)\,dV}
+\end{equation}
+Here $\mathbf{D}$ is the displacement field. The corresponding Hamiltonian is
+\begin{eqnarray}
+\mathrm{H}&=&\mathrm{\frac{1}{2M}\left(\mathbf{P}+\int\left(\mathbf{D}\times\mathbf{B}\right)\,dV-\frac{\mathbf{m}\times\mathbf{E}}{c^2}\right)^2} \nonumber \\
+&-&\mathrm{\frac{1}{2}\alpha E^2-\mathbf{m}\cdot\mathbf{B}+\int\left(\frac{\epsilon_0}{2}E^2+ \frac{1}{2\mu_0}B^2\right)\,dV}
+\label{hamiltonian1}
+\end{eqnarray}
+Where $P$ is the canonical momentum of system. The corresponding Schr\"{o}dinger equation is 
+\begin{eqnarray}
+\mathrm{i\hbar\dot{\psi}}&=&\mathrm{\frac{1}{2M}\left(\mathbf{P}+ \mathbf{S}_A-\frac{\mathbf{m}\times\mathbf{E}}{c^2}\right)^2\,\Psi-\frac{1}{2}\alpha E^2\,\psi}\nonumber \\
+&-&\mathrm{\mathbf{m}\cdot\mathbf{B}\,\psi+\left(\int\left[\frac{\epsilon_0}{2}E^2+ \frac{1}{2\mu_0}B^2\right]\,dV\right)\,\psi}
+\label{schrodinger1}
+\end{eqnarray}
+Where $\mathrm{\mathbf{S}_A=\int \left(\mathbf{D}\times\mathbf{B}\right) \, dV}$ is the Abraham momentum.  We preform a unitary transformation by writing the wave function as
+\begin{equation}
+\mathrm{\psi=\Psi\exp{\left[-\frac{\mathrm{i}}{\mathrm{\hbar}}\int_{\gamma[0,\mathbf{r}]}\mathbf{S}_A\cdot d\mathbf{r}'\right]}}
+\label{abrahamrep}
+\end{equation}
+Where $\gamma$ is an arbitrary path between $[0,\mathbf{r}]$. Substituting this into Eq.\ (\ref{schrodinger1}) and rearranging yields
+\begin{eqnarray}
+&&\mathrm{i\hbar\dot{\Psi}=\frac{1}{2M}\left(\mathbf{P}-\frac{\mathbf{m}\times\mathbf{E}}{c^2}\right)^2\Psi-\left(\frac{1}{2}\alpha E^2+\mathbf{m}\cdot\mathbf{B}\right)\Psi} \nonumber \\
+&&\mathrm{+\left(\int\left[\frac{\epsilon_0}{2}E^2+\frac{1}{2\mu_0}B^2\right]\,dV\right)\Psi-\left(\frac{\partial}{\partial t}\int \mathbf{S}_A\,\mathrm{dV}\right)\Psi} \nonumber \\
+\label{schrodinger2}
+\end{eqnarray}
+We will call this the Abraham representation, and will come back to it shortly, but first we explore another representation. Instead of the unitary transformation given in Eq.\ (\ref{abrahamrep}), let us choose
+\begin{equation}
+\mathrm{\psi=\Psi\exp{\left[-\frac{\mathrm{i}}{\mathrm{\hbar}}\int_{\gamma[0,\mathbf{r}]}\mathbf{S}_M\cdot d\mathbf{r}'\right]}}
+\label{directrep}
+\end{equation}
+Where $\mathbf{S}_M=\int \left(\epsilon_0\mu_0\,\mathbf{E}\times\mathbf{H}\right) \, dV$ is the Minkowski momentum. Plugging this into  Eq.\ (\ref{schrodinger1}) and rearranging yields
+\begin{eqnarray}
+&&\mathrm{i\hbar\dot{\Psi}=\frac{1}{2M}\left(\mathbf{P}-\mathbf{d}\times\mathbf{B}\right)^2\Psi-\left(\frac{1}{2}\alpha E^2+\mathbf{m}\cdot\mathbf{B}\right)\Psi} \nonumber \\
+&&\mathrm{+\left(\int\left[\frac{\epsilon_0}{2}E^2+\frac{1}{2\mu_0}B^2\right]\,dV\right)\Psi-\left(\frac{\partial}{\partial t}\int \mathbf{S}_M\,\mathrm{dV}\right)\Psi} \nonumber \\
+\label{schrodinger3}
+\end{eqnarray}
+This representation will be called the Minkowski representation.  
+Both the Abraham representation Eq.\ (\ref{schrodinger2}) and the Minkowski representation Eq.\ (\ref{schrodinger3}) are valid in describing the interaction between an electrically neutral, polarizable atom and an electromagnetic field.  Although both are valid, the initial wave function to the system differs from one representation to another. Suppose we know the ground state wave function of the system beforehand $\psi_0$.  Which formulation of the Hamilton should we use?   If we use the  Abraham Hamiltonian and naively plug in $\Psi=\psi_0$, we would get an incorrect result. Using the Abraham Hamiltonian forces us to use the initial wave function \cite{boyd}
+\begin{equation}
+\mathrm{\Psi=\psi_0\exp{\left[-\frac{\mathrm{i}}{\mathrm{\hbar}}\int_0^\mathbf{x} \left(\mathbf{d}\times\mathbf{B}\right) \, \mathrm{dx'}\right]}}
+\end{equation}
+On the other hand, we are free to use $\Psi=\psi_0$ if we decide to use the direct coupling representation.  
+\vspace{5mm}
+
+What Eq.\ (\ref{schrodinger3}) and Eq.\ (\ref{schrodinger5}) tell us is that using the direct coupling representation would yield us the Minkowski momentum, while the semi-coupled representation would give the Abraham momentum. Of course we arrive at the well known relation between the A/B momentum and the kinetic/canonical momentum of the polarizable atom.
+\begin{equation}
+\mathrm{M\dot{\mathbf{r}}+\int \mathbf{\mathcal{S}}_{Abr}\,dV=\mathbf{P}+\int \mathbf{\mathcal{S}}_{Min}\,dV}
+\end{equation}
+Another interesting feature is that the HMW phase
+\begin{equation}
+\mathrm{\phi_{HMW}=\exp{\left[-\frac{\mathrm{i}}{\mathrm{\hbar}}\int_0^\mathbf{x}(\mathbf{d}\times\mathbf{B})\,\mathrm{dx'}\right]}}
+\label{HMWphase}
+\end{equation}
+appears naturally in the semi-coupled representation. As was noted above, the HMW phase must be present whenever one uses the canonical momentum rather than the kinetic.  
+\vspace{5mm}
+
+Perhaps most surprising of all is the manner in which the momentum - be it Abraham or Minkowski - came about in this calculation.  We began with a Lagrangian  Eq.\ (\ref{lagrangian1})  describing the energy present in the coupled atom-electromagnetic system.  Here the Euler-Lagrange equations yield no electromagnetic momentum to speak of
+\begin{equation}
+\mathrm{M\ddot{\mathbf{x}}=\mathbf{\nabla}\int\frac{1}{2}\left(\mathbf{D\cdot E}+\mathbf{H\cdot B}\right)}
+\end{equation}
+It was only after we included the Lorentz correction $\mathbf{v}\times\mathbf{B}$ in Eq.\ (\ref{lagrangian2}) that the Euler-Lagrange equation coughed up the contribution due to the electromagnetic momentum.
+\begin{equation}
+\mathrm{M\ddot{\mathbf{x}}=\mathbf{\nabla}\int\frac{1}{2}\left(\mathbf{D\cdot E}+\mathbf{H\cdot B}\right)+\frac{\partial}{\partial t}\left(\mathbf{D}\times\mathbf{B}\right)}
+\end{equation}
+Suppose now that the fields $\mathbf{D}$ and $\mathbf{B}$ are static and act perpendicular to each other.  We would say that clearly the fields carry no momentum, and yet a momentum term appears in the Euler-Lagrange equation.  What is going on?
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Appendix: Abraham representation expansion}
+
+In this section we go through the derivation of the Abraham Hamiltonian given by Eq.\ (\ref{schrodinger2}).  Eq.\ (\ref{schrodinger3}) can be similarly derived.  The Schrodinger equation Eq.\ (\ref{schrodinger1}) is given by
+\begin{eqnarray}
+\mathrm{i\hbar\dot{\psi}}&=&\mathrm{\frac{1}{2M}\left(\mathbf{P}+ \mathbf{S}_A-\frac{\mathbf{m}\times\mathbf{E}}{c^2}\right)^2\,\Psi-\frac{1}{2}\alpha E^2\,\psi}\nonumber \\
+&-&\mathrm{\mathbf{m}\cdot\mathbf{B}\,\psi+\left(\int\left[\frac{\epsilon_0}{2}E^2+ \frac{1}{2\mu_0}B^2\right]\,dV\right)\,\psi}
+\label{schrodingerappendix1}
+\end{eqnarray}
+Here we have written 
+\begin{equation}
+\mathrm{\mathbf{S}_A=\int \left(\mathbf{D}\times\mathbf{B}\right) \, dV}
+\end{equation}
+We then apply the a unitary transformation to the wave function and write $\psi$ as
+\begin{equation}
+\mathrm{\psi=\Psi\exp{\left[-\frac{\mathrm{i}}{\mathrm{\hbar}}\int_{\gamma[0,\mathbf{r}]}\mathbf{S}_M\cdot d\mathbf{r}'\right]}}
+\label{abrahamrepappendix}
+\end{equation}
+Where the integral is a path integral between $[0,\mathrm{\mathbf{r}}]$
+This yields
+\begin{eqnarray}
+&&\mathrm{\mathrm{i}\mathrm{\hbar}\dot{\Psi}+\Psi\,\left(\frac{\partial}{\partial t}\mathrm{\int_0^\mathbf{x} \mathbf{S}_A \, \mathrm{dx'}}\right)}\nonumber \\
+&=&\mathrm{-\hbar^2(\nabla^2\Psi)+2i\hbar(\mathbf{\nabla}\Psi)\mathbf{S}_A+\Psi {S_A}^2+i\hbar\Psi(\mathbf{\nabla}\mathbf{S}_A)} \nonumber \\
+&&\mathrm{-2i\hbar(\mathbf{\nabla}\Psi)\mathbf{S}_A-i\hbar\Psi(\mathbf{\nabla}\mathbf{S}_A)-2\Psi{\mathbf{S}_A}^2} \nonumber \\
+&&\mathrm{-2i\hbar(\mathbf{\nabla}\Psi)(\mathbf{d}\times\mathbf{B})-i\hbar\Psi(\mathbf{\nabla}(\mathbf{d}\times\mathbf{B}))-2\Psi\mathbf{S}_A(\mathbf{d}\times\mathbf{B}) }\nonumber \\
+&&\mathrm{+\Psi\left({\mathbf{S}_A}^2+(\mathbf{d}\times\mathbf{B})^2+2\mathbf{S}_A(\mathbf{d}\times\mathbf{B})\right)}\nonumber \\
+&&\mathrm{-\Psi\int\frac{1}{2}\left(\mathbf{D\cdot E +H\cdot B}\right)\,dV}
+\label{schrodingera2}
+\end{eqnarray}
+Here we have omitted writing out the phase factor 
+\begin{equation}
+\mathrm{\exp{\left[-\frac{\mathrm{i}}{\mathrm{\hbar}}\int_0^\mathbf{x}\mathbf{S}_A\,\mathrm{dx'}\right]}}
+\label{phasefactor}
+\end{equation}
+as it appears multiplying every term and will be factored out.  Canceling terms leaves us with
+\begin{eqnarray}
+&&\mathrm{\mathrm{i}\mathrm{\hbar}\dot{\Psi}+\Psi\,\left(\frac{\partial}{\partial t}\mathrm{\int_0^\mathbf{x} \mathbf{S}_A \, \mathrm{dx'}}\right)}\nonumber \\
+&=&\mathrm{-\hbar^2(\nabla^2\Psi) -2i\hbar(\mathbf{\nabla}\Psi)(\mathbf{d}\times\mathbf{B})-i\hbar\Psi(\mathbf{\nabla}(\mathbf{d}\times\mathbf{B}))}\nonumber \\
+&&\mathrm{+\Psi(\mathbf{d}\times\mathbf{B})^2-\Psi\int\frac{1}{2}\left(\mathbf{D\cdot E +H\cdot B}\right)\,dV}
+\label{schrodingera3}
+\end{eqnarray}
+Factoring terms, this can be rearranged into
+\begin{equation}
+\mathrm{i\mathrm{\hbar}\dot{\Psi}=\mathrm{\left(\frac{\left(\mathbf{P}+\mathbf{d}\times\mathbf{B}\right)^2}{2M}-\int\frac{1}{2}\left(\mathbf{D\cdot E}+\mathbf{H\cdot B}\right)\,dV-\frac{\partial}{\partial t}\int_0^\mathbf{x} \mathbf{S}_A\,\mathrm{dx'}\right)\Psi}}
+\label{schrodingera4}
+\end{equation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Appendix: The G\"{o}ppert-Mayer Transformation }
+
+We begin with the minimal coupling Hamiltonian for a system of charges interacting with an electromagnetic field
+\begin{equation}
+\mathrm{H(t)=\sum_{j}\frac{1}{2m_j}\left[\mathbf{p}_j-q_j \,\mathbf{A}(\mathbf{0},t)\right]^2+V_{c}(\mathbf{x})}
+\label{appendixminimalhamiltonian}
+\end{equation}
+where $\mathbf{A}(\mathbf{x},t)$ is the vector potential, $e_j$ is the charge, and $V_{\mathrm{c}}(\mathbf{x})$ is the scalar potential energy of the system.  In the long-wavelength approximation, we have assumed the spatial variation of $\mathbf{A}(\mathbf{x},t)$ is negligible.  We therefore choose the location of the system of charges considered to be at $\mathbf{x}=0$ and set $\mathbf{A}(\mathbf{x},t)=\mathbf{A}(\mathbf{0},t)$.  The corresponding Schr\"{o}dinger equation for the minimal coupling Hamiltonian is given by
+\begin{equation}
+\mathrm{i\hbar \dot{\psi}(\mathbf{x},t)=\left[\sum_{j}\frac{1}{2m_j}\left[\mathbf{p}_j-q_j\, \mathbf{A}(\mathbf{0},t)\right]^2+V_{c}(\mathbf{x})\right]\psi(\mathbf{x},t)}
+\label{minimalschrodinger}
+\end{equation}
+The unitary transformation responsible for giving rise to the electric dipole interaction (direct coupling representation) is given by the G\"{o}ppert-Mayer transformation (GMT)
+\begin{equation}
+\mathrm{\Theta (t)=\mathrm{\exp{\left[\frac{\mathrm{i}}{\mathrm{\hbar}}\sum_jq_j\,\mathbf{r}_j\cdot \mathbf{A}(\mathbf{0},t) \right]}=\exp{\left[\frac{\mathrm{i}}{\mathrm{\hbar}}\mathbf{d}\cdot \mathbf{A}(\mathbf{0},t) \right]}}}
+\label{gmtransformation}
+\end{equation}
+where
+\begin{equation}
+\mathbf{d}=\sum_{j} e_j \,\mathbf{r}_j
+\end{equation}
+ We rewrite the wave function $\psi$ as
+\begin{equation}
+\mathrm{\psi(\mathbf{x},t)=\Theta(t)\Psi(\mathbf{x},t)=\exp{\left[\frac{\mathrm{i}}{\mathrm{\hbar}}\mathbf{d}\cdot \mathbf{A}(\mathbf{0},t) \right]}\Psi(\mathbf{x},t)}
+\end{equation} 
+Substituting this into Eq.\ (\ref{minimalschrodinger}) yields
+This yields
+\begin{eqnarray}
+&&\mathrm{\mathrm{i}\mathrm{\hbar}\dot{\Psi}(\mathbf{x},t)\Theta(t)+\Psi(\mathbf{x},t)\Theta(t)\,\left(\mathbf{d}\cdot\mathbf{E}(\mathbf{0},t)\right)=}\nonumber \\
+&&\mathrm{-\Psi(\mathbf{x},t)\Theta(t)\left(i\sum_j\frac{e_j}{2m_jc}\mathbf{A}(\mathbf{0},t)\right)^2}\nonumber \\
+&-&\mathrm{\nabla\Psi(\mathbf{x},t)\Theta(t)\left(2i\hbar\sum_j\frac{e_j}{2m_j}\mathbf{A}(\mathbf{0},t)\right)}\nonumber \\
+&-&\mathrm{\hbar^2\nabla^2\Psi(\mathbf{x},t)\Theta(t)+2\Psi(\mathbf{x},t)\Theta(t)\left(i\sum_j\frac{e_j}{2m_j}\mathbf{A}(\mathbf{0},t)\right)^2}\nonumber \\
+&+&\mathrm{\nabla\Psi(\mathbf{x},t)\Theta(t)\left(2i\hbar\sum_j\frac{e_j}{2m_j}\mathbf{A}(\mathbf{0},t)\right)}\nonumber \\
+&+&\mathrm{\Psi(\mathbf{x},t)\Theta(t)\left(i\sum_j\frac{e_j}{2m_j}\mathbf{A}(\mathbf{0},t)\right)^2 +\Psi(\mathbf{x},t)\Theta(t)\mathbf{V}_c(\mathbf{x})}\nonumber \\
+\end{eqnarray}
+Where we have used 
+\begin{equation}
+\mathrm{\mathbf{E}(\mathbf{0},t)=-\frac{\partial \mathbf{A}(\mathbf{0},t)}{\partial t}}
+\label{constitutive1}
+\end{equation}
+Canceling terms and rearranging leaves us with
+\begin{eqnarray}
+\mathrm{i\hbar\dot{\Psi}(\mathbf{x},t)=\left[\frac{\mathbf{P}^2}{2M}-\mathbf{d}\cdot\mathbf{E}(\mathbf{0},t)+\mathbf{V}_c(\mathbf{x})\right]\Psi(\mathbf{x},t)}
+\label{directschrodinger}
+\end{eqnarray}
+Where $\mathbf{P}=\sum_j\mathbf{p}_j$ and $M=\sum_j m_j$
+Here we have arrived at the direct coupling representation of the Hamiltonian. This Hamiltonian however, does not include the radiation energy of the fields themselves. Our treatment of the minimal coupling Hamiltonian Eq.\ (\ref{minimalschrodinger}) may be extended further by including the radiation energy of the fields themselves
+\begin{equation}
+\mathrm{H_R=\frac{1}{2}\int\left( \epsilon_0\mathbf{E}^2(\mathbf{x},t)+\frac{\mathbf{B}^2(\mathbf{x},t)}{\mu_0}\right)\,dV=\sum_j\hbar\omega_j\left({a_j}^{\dagger}\, a_j+\frac{1}{2}\right)}
+\end{equation}
+The question then arises, how does the radiation Hamiltonian transform under the G\"{o}ppert-Mayer unitary transformation transformation? Clearly if the fields are treated classically, the GMT Eq.\ (\ref{gmtransformation}) will commute with the electric field.  If however, we consider a quantized field, this is no longer true. In order to determine how the fields transform under a quantized field, we must promote the vector potential to an operator \cite{thirunamachandran}
+\begin{equation}
+\mathrm{\mathbf{A}(\mathbf{x},t)=\sum_j\mathcal{A}_{\omega_j}\left[a_j\,\mathbf{\varepsilon}_j e^{i(\mathbf{k}_j\cdot\mathbf{x}-\omega t)}+{a_j}^{\dagger}\,\mathbf{\varepsilon}_j e^{-i(\mathbf{k}_j\cdot\mathbf{x}-\omega t)}\right]}
+\end{equation}
+where $\varepsilon$ is the polarization, and
+\begin{equation}
+\mathrm{\mathcal{A}_{\omega_j}=\left[\frac{\hbar}{2\epsilon_0 L^3\omega_j}\right]^{\frac{1}{2}}}
+\end{equation} 
+The transverse electric field in the Coulomb gauge is given by
+\begin{equation}
+\mathrm{\mathbf{E}_{\perp}(\mathbf{x},t)=i\sum_{j,\mu}\mathcal{E}_{\omega_j}\left[a_j\,\mathbf{\varepsilon}_j e^{i(\mathbf{k}_j\cdot\mathbf{x}-\omega t)}-{a_j}^{\dagger}\,\mathbf{\varepsilon}_j e^{-i(\mathbf{k}_j\cdot\mathbf{x}-\omega t)}\right]}
+\end{equation}
+where
+\begin{equation}
+\mathrm{\mathcal{E}_{\omega_j}=\left[\frac{\hbar\omega_j}{2\epsilon_0 L^3}\right]^{\frac{1}{2}}}
+\end{equation} 
+From here it is necessary to determine the commutation relation between the vector potential and electric field.
+\begin{eqnarray}
+&&\mathrm{[\mathbf{A}(\mathbf{x},t),\mathbf{E}_{\perp}(\mathbf{x}',t)]=} \nonumber \\
+&&\mathrm{\frac{i\hbar}{2\epsilon_0 L^3}\sum_{j_{\perp},j'_{\perp}}\left(\left[a^{\dagger}_{j},a_{j'}\right]\,e^{i\mathbf{k}_{j'}\cdot\mathbf{x'}}e^{-i\mathbf{k}_{j}\cdot\mathbf{x}}\right)+} \nonumber \\
+&&\mathrm{\frac{i\hbar}{2\epsilon_0 L^3}\sum_{j_{\perp},j'_{\perp}}\left(\left[a^{\dagger}_{j'},a_{j}\right]\,e^{i\mathbf{k}_{j}\cdot\mathbf{x}}e^{-i\mathbf{k}_{j'}\cdot\mathbf{x'}}\right)=} \nonumber \\
+&&\mathrm{\frac{i\hbar}{2\epsilon_0 L^3}\sum_{j_{\perp}}\left(e^{i\mathbf{k}_j\cdot(\mathbf{x}-\mathbf{x}')}+e^{-i\mathbf{k}_j\cdot(\mathbf{x}-\mathbf{x}')}\right)} \nonumber \\
+\end{eqnarray}
+Where we have made use of the relation $[a_j,a^{\dagger}_{j'}]=\delta_{j,j'}$.  In the summation, the notation $j_{\perp}$ indicates that we are taking the sum over the transverse modes. We convert our sum into an integral through \cite{loudonbook}
+\begin{equation}
+\mathrm{\sum_{k}\rightarrow \frac{L^3}{(2\pi)^3}\int\,d^3k}
+\end{equation}
+and we make use of the transverse delta function
+\begin{equation}
+\mathrm{\delta_{\perp}(\mathbf{x}-\mathbf{x}')=\frac{1}{(2\pi)^3}\int\,d^3k_{\perp}\,e^{i\mathbf{k}_j\cdot(\mathbf{x}-\mathbf{x}')}}
+\end{equation}
+Therefore we find 
+\begin{equation}
+\mathrm{[\mathbf{A}(\mathbf{x,t}),\mathbf{E}_{\perp}(\mathbf{x}',t)]=-\frac{i\hbar}{\epsilon_0}\delta_{\perp}(\mathbf{x}-\mathbf{x}')}
+\label{comm1}
+\end{equation}
+In order to determine how the electric field transforms under the GMT $\Theta(t)$ we use the property that for any two operators $\mathbf{A}$ and $\mathbf{B}$
+\begin{equation}
+\exp{(i\mathbf{A})}\,\mathbf{B}\exp{(-i\mathbf{A})}=\mathbf{B}+i[\mathbf{A},\mathbf{B}]+...
+\label{comm2}
+\end{equation}
+Using Eq.\ (\ref{comm1}) and Eq.\ (\ref{comm2}) we find
+\begin{equation}
+\mathrm{\Theta(t)\mathbf{E}_{\perp}(\mathbf{x},t)\Theta^{\dagger}(t)=\mathbf{E}_{\perp}(\mathbf{x},t)+\frac{1}{\epsilon_0}\mathbf{d}_{\perp}(\mathbf{x},t)=\frac{\mathbf{D}(\mathbf{x},t)}{\epsilon_0}}
+\end{equation}
+Where $\mathbf{D}$ is the displacement field.  Note that for a neutral system $\nabla\cdot\mathbf{D}=0$ and therefore the displacement field is fully transverse which allows us to drop the perpendicular suffix.
+It can easily be checked that 
+\begin{eqnarray}
+&&\mathrm{\Theta(t)\mathbf{B}(\mathbf{x},t)\Theta^{\dagger}(t)=\mathbf{B}(\mathbf{x},t)} \\
+&&\mathrm{\Theta(t)\mathbf{A}(\mathbf{x},t)\Theta^{\dagger}(t)=\mathbf{A}(\mathbf{x},t)} \\
+&&\mathrm{\Theta(t)\mathbf{P}(\mathbf{x},t)\Theta^{\dagger}(t)=\mathbf{P}(\mathbf{x},t)}
+\end{eqnarray}
+This allows us to deduce that 
+\begin{equation}
+\mathrm{\Theta(t)\mathbf{D}(\mathbf{x},t)\Theta^{\dagger}(t)=\epsilon_0\mathbf{E}(\mathbf{x},t)} 
+\end{equation}
+We can now preform a generalized G\"{o}ppert-Mayer transformation for the total minimal coupling Hamiltonian
+\begin{eqnarray}
+&&\mathrm{H_{Min}=H_0+H_R}\nonumber \\
+&&=\mathrm{\sum_{j}\frac{1}{2m_j}\left[\mathbf{p}_j-q_j \,\mathbf{A}(\mathbf{0},t)\right]^2+V_{c}(\mathbf{x})}\nonumber \\
+&&\mathrm{+\frac{1}{2}\int\left( \epsilon_0\mathbf{E}^2(\mathbf{x},t)+\frac{\mathbf{B}^2(\mathbf{x},t)}{\mu_0}\right)\,dV}
+\label{fullminimal}
+\end{eqnarray}
+We begin with the Schr\"{o}dinger equation
+\begin{equation}
+i\hbar\frac{\partial}{\partial t}\psi=H\,\psi
+\end{equation}
+and rewrite the wave function as
+\begin{equation}
+\mathrm{\psi=e^{\frac{i}{\hbar}\mathbf{d}\cdot\mathbf{A}}\Phi}
+\end{equation}
+This allows us to express the Schr\"{o}dinger equation in terms of the wave function $\Phi$ 
+\begin{eqnarray}
+&&\mathrm{i\hbar\frac{\partial}{\partial t}\Phi=i\hbar\frac{\partial}{\partial t}\left(e^{\frac{i}{\hbar}\mathbf{d}\cdot\mathbf{A}}\psi\right)}\nonumber \\
+&=&\mathrm{i\hbar e^{\frac{i}{\hbar}\mathbf{d}\cdot\mathbf{A}}\frac{\partial}{\partial t}\psi-e^{\frac{i}{\hbar}\mathbf{d}\cdot\mathbf{A}}\left(\dot{\mathbf{d}}\cdot\mathbf{A}+\mathbf{d}\cdot\dot{\mathbf{A}}\right)\psi} \nonumber \\
+&=&\mathrm{e^{\frac{i}{\hbar}\mathbf{d}\cdot\mathbf{A}}\,H\,\psi-e^{\frac{i}{\hbar}\mathbf{d}\cdot\mathbf{A}}\left(\dot{\mathbf{d}}\cdot\mathbf{A}+\mathbf{d}\cdot\mathbf{E}\right)\psi} \nonumber \\
+&=&\mathrm{e^{\frac{i}{\hbar}\mathbf{d}\cdot\mathbf{A}}\,H\,e^{-\frac{i}{\hbar}\mathbf{d}\cdot\mathbf{A}}\Phi-e^{\frac{i}{\hbar}\mathbf{d}\cdot\mathbf{A}}\left(\dot{\mathbf{d}}\cdot\mathbf{A}+\mathbf{d}\cdot\mathbf{E}\right)e^{-\frac{i}{\hbar}\mathbf{d}\cdot\mathbf{A}}\Phi} \nonumber \\
+\end{eqnarray}
+The Hamiltonian $\mathrm{H_{Min}}$ transforms under the generalized GMT in the same way that that it did when the fields were considered classical, with the exception that $\mathbf{E}\rightarrow\mathbf{D}/\epsilon_0$.  Therefore under the generalized GMT, the minimal coupling Hamiltonian Eq.\ (\ref{fullminimal}) is transformed into the direct coupling Hamiltonian
+\begin{eqnarray}
+&&\mathrm{H_{DC}=\frac{\mathbf{P}^2}{2M}-\mathbf{d}\cdot\mathbf{D}(\mathbf{0},t)}\nonumber \\
+&&\mathrm{+\frac{1}{2}\int\left( \frac{\mathbf{D}^2}{\epsilon_0}(\mathbf{x},t)+\frac{\mathbf{B}^2(\mathbf{x},t)}{\mu_0}\right)\,dV} \nonumber \\
+&&\mathrm{+\mathbf{V}_c(\mathbf{x})+\dot{\mathbf{d}}\cdot\mathbf{A}}
+\end{eqnarray}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Appendix: Dipole Direct Coupling Derivation}
+
+In this section we go through the derivation of the direct coupling Hamiltonian. We begin with the Schr\"{o}dinger equation in the minimal coupling representation
+\begin{equation}
+\mathrm{i\hbar\dot{\psi}=\sum_j\left[\frac{1}{2m_j}\left(\mathbf{P}_j-q_j\mathbf{A}(\mathbf{x},t)\right)^2+\mathbf{V}_c(\mathbf{x})\right]\psi}
+\label{minschrodinger1}
+\end{equation}
+Where $\mathbf{V}_c$ is the Coulomb potential. We write the wave function as
+\begin{equation}
+\mathrm{\psi=\Psi\exp{\left[-\frac{\mathrm{i}}{\mathrm{\hbar}}\sum_j\,\int q_j\mathbf{A}(\mathbf{x},t)\cdot\mathrm{dr}\right]}}
+\label{directwavefunction}
+\end{equation}
+Plugging this into the Schr\"{o}dinger equation Eq.\ (\ref{minschrodinger1})
+\begin{eqnarray}
+&&\mathrm{\mathrm{i}\mathrm{\hbar}\dot{\Psi}+\Psi\,\frac{\partial}{\partial t}\left(\sum_j\int q_j\mathbf{A}(\mathbf{x},t) \cdot\mathbf{dr}\right)}\nonumber \\
+&=&\mathrm{-\hbar^2(\nabla^2\Psi)+2i\hbar(\mathbf{\nabla}\Psi)\left(\sum_j q_j\mathbf{A}(\mathbf{x},t)\right)+\Psi \left(\sum_j q_j\mathbf{A}(\mathbf{x},t)\right)^2 }\nonumber \\
+&&+\mathrm{i\hbar\Psi\mathbf{\nabla}\left(\sum_j q_j\mathbf{A}(\mathbf{x},t)\right) 
+-2i\hbar(\mathbf{\nabla}\Psi)\left(\sum_j q_j\mathbf{A}(\mathbf{x},t)\right)}\nonumber \\
+&&\mathrm{-2\Psi\left(\sum_j q_j\mathbf{A}(\mathbf{x},t)\right)-i\hbar\Psi\mathbf{\nabla}\left(\sum_j q_j\mathbf{A}(\mathbf{x},t)\right)}\nonumber \\
+&&+\mathrm{\Psi\left(\sum_j q_j\mathbf{A}(\mathbf{x},t)\right)^2+
+\Psi\mathbf{V}_c(\mathbf{x})}
+\label{minschrodinger2}
+\end{eqnarray}
+Here we have omitted writing out the phase factor 
+\begin{equation}
+\mathrm{\exp{\left[-\frac{\mathrm{i}}{\mathrm{\hbar}}\sum_j\,\int q_j\mathbf{A}(\mathbf{x},t)\cdot\mathrm{dr}\right]}}
+\label{phasefactor}
+\end{equation}
+as it appears multiplying every term and will be factored out.  Canceling terms and rearranging leaves us with
+\begin{equation}
+\mathrm{i\mathrm{\hbar}\dot{\Psi}=\mathrm{\left[\frac{\mathbf{P}^2}{2M}-\frac{\partial}{\partial t}\left(\sum_j\int q_j\mathbf{A}(\mathbf{x},t) \cdot\mathbf{dr}\right]+\mathbf{V}_c(\mathbf{x})\right)\Psi}}
+\end{equation}
+Where $\mathbf{P}=\sum_j \mathbf{P}_j$, and $M=\sum_j m_j$.  We now make use of the relationship $\partial_t \mathbf{A}(\mathbf{x},t)=-\mathbf{E}(\mathbf{x},t)$ to rewrite the direct coupling Hamiltonian as
+\begin{equation}
+\mathrm{i\mathrm{\hbar}\dot{\Psi}=\mathrm{\left(\frac{\mathbf{P}^2}{2M}-\left[\sum_j\int q_j\mathbf{E}(\mathbf{x},t) \cdot\mathbf{dr}\right]+\mathbf{V}_c(\mathbf{x})\right)\Psi}}
+\end{equation}
+Here we assume that we are dealing with a neutral dielectric material which allows us to write
+\begin{equation}
+\mathrm{\sum_j\int q_j\mathbf{E}(\mathbf{x},t) \cdot\mathbf{dr}=\sum_{\alpha}\int q_{\alpha}\left[\mathbf{E}_{+}-\mathbf{E}_{-}\right]_{\alpha}\cdot\mathbf{dr}}
+\end{equation}
+where we have now grouped the bound charges into the dipole pairings which are indexed by $\alpha$.  This is nothing but the dipole energy $-\mathbf{d}\cdot\mathbf{E}$    
+where
+\begin{equation}
+\mathbf{d}=\sum_{j} e_j \,\mathbf{r}_j
+\end{equation}
+With this approximation we can write the direct coupling Hamiltonian in it's final form
+\begin{equation}
+\mathrm{i\mathrm{\hbar}\dot{\Psi}=\mathrm{\left(\frac{\mathbf{P}^2}{2M}-\mathbf{d}\cdot\mathbf{E}(\mathbf{x},t)+\mathbf{V}_c(\mathbf{x})\right)\Psi}}
+\end{equation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Appendix: Gauge Transformation - Direct Coupling}
+
+In this section, we outline the derivation of the direct coupling Hamiltonian through the use of the G\"{o}ppert-Mayer gauge.  We begin with the minimal coupling Lagrangian
+\begin{eqnarray}
+\mathrm{L_{min}}&=&\mathrm{\frac{1}{2}\sum_n m_n\dot{\mathbf{r}}_n-V_c+\sum_n\left[q_n\dot{\mathbf{r}}_n\mathbf{A}(\mathbf{r}_n,t)-q_nU(\mathbf{r}_n,t)\right]} \nonumber \\
+&+&\mathrm{\frac{\epsilon_0}{2}\int\left[\dot{\mathbf{A}}^2(\mathbf{r},t)-c^2\left(\nabla\times\mathbf{A}(\mathbf{r},t)\right)^2\right]d^3\mathbf{r}}
+\label{minimallagrangian1}
+\end{eqnarray}
+Where $\mathbf{A}$ and $U$ are the vector and scalar potential for the external fields, and $V_{\mathrm{c}}$ is the Coulomb potential.
+The corresponding Hamiltonian is given by
+\begin{eqnarray}
+\mathrm{H_{min}}&=&\mathrm{\sum_n \frac{1}{2m_n}\left[\mathbf{p}_n-q_n\mathbf{A}(\mathbf{r_n},t)\right]^2+V_{c}+\sum_nq_nU(\mathbf{r}_n,t)}\nonumber \\
+&+&\mathrm{\frac{\epsilon_0}{2}\int\left[\dot{\mathbf{A}}^2(\mathbf{r},t)-c^2\left(\nabla\times\mathbf{A}(\mathbf{r},t)\right)^2\right]d^3\mathbf{r}}
+\label{minimalhamiltonian1}
+\end{eqnarray}
+Here the conjugate momentum and conjugate field are given by
+\begin{eqnarray}
+&&\mathrm{\mathbf{p}_n=m_n\dot{\mathbf{r}}_n+q_n\mathbf{A}(\mathbf{r}_n,t)} \\
+&&\mathrm{\mathbf{\Pi}(\mathbf{r},t)=\epsilon_0 \dot{\mathbf{A}}(\mathbf{r},t)=-\epsilon_0\mathbf{E}(\mathbf{r},t)}\\
+\end{eqnarray}
+Let us now preform the following gauge transformation
+\begin{eqnarray}
+&&\mathrm{\mathbf{A}'(\mathbf{r_n},t)=\mathbf{A}(\mathbf{r_n},t+\nabla\chi(\mathbf{r}_n,t)}  \\
+&&\mathrm{U'(\mathbf{r_n},t)=U(\mathbf{r_n},t)+\frac{\partial}{\partial t}\chi(\mathbf{r}_n,t)}
+\end{eqnarray}
+Substituting this into the minimal coupling Lagrangian Eq.\ (\ref{minimallagrangian1}), the transformed Lagrangian becomes
+\begin{eqnarray}
+\mathrm{L_{dir}}&=&\mathrm{\frac{1}{2}\sum_n m_n\dot{\mathbf{r}}_n-V_c+\sum_n\left[q_n\dot{\mathbf{r}}_n\mathbf{A}'(\mathbf{r}_n,t)-q_nU'(\mathbf{r}_n,t)\right]} \nonumber \\
+&+&\mathrm{\frac{\epsilon_0}{2}\int\left[\dot{\mathbf{A}}^2(\mathbf{r},t)-c^2\left(\nabla\times\mathbf{A}(\mathbf{r},t)\right)^2\right]d^3\mathbf{r}} \nonumber \\
+&=&\mathrm{L_{min}+\frac{d}{dt}\left[\sum_n q_n\,\chi(\mathbf{r}_n,t)\right]}
+\label{minimallagrangian2}
+\end{eqnarray}
+This shows that the gauge transformation generated by $\chi$ is equivalent to adding 
+\begin{equation}
+\mathrm{\frac{d}{dt}\left[\sum_n q_n\,\chi(\mathbf{r}_n,t)\right]}
+\end{equation}
+to the Lagrangian.  The direct coupling Lagrangian is obtained through the G\"{o}ppert-Mayer generator
+\begin{equation}
+\mathrm{\chi(\mathbf{r},t)=-\int \mathbf{P}^{\perp}(\mathbf{r},t)\cdot\mathbf{A}(\mathbf{r},t)\,d^3\mathbf{r}}
+\end{equation}
+Where $\mathbf{P}(\mathbf{r})=\sum_n q_n\left(r-R_n\right)\delta(\mathbf{r}-\mathbf{R}_n)$ is the electric polarization vector field.  The transformed conjugate momentum and conjugate field become
+\begin{eqnarray}
+&&\mathrm{\mathbf{p}_n=m_n\dot{\mathbf{r}}} \\
+&&\mathrm{\mathbf{\Pi}(\mathbf{r},t)=\epsilon_0 \dot{\mathbf{A}}(\mathbf{r},t)-\mathbf{P}^{\perp}(\mathbf{r},t)=-\mathbf{D}(\mathbf{r},t)}
+\end{eqnarray}
+Where $\mathbf{D}$ is the displacement field.  Note that for a neutral system $\nabla\cdot\mathbf{D}=0$ and therefore the displacement field is fully transverse which allows us to drop the perpendicular suffix. From here we can construct the transformed Hamiltonian 
+\begin{eqnarray}
+\mathrm{H_{dir}}&=&\mathrm{\sum_n\mathbf{p}_n\cdot\dot{\mathbf{r}}_n+\int\Pi(\mathbf{r},t)\cdot\dot{\mathbf{A}}(\mathbf{x},t)\,d^3\mathbf{r}\,-L_{dir}} \nonumber \\
+&=&\mathrm{\sum_n \frac{1}{2m_n}\mathbf{p}^2_n+V_{c}-\frac{1}{\epsilon_0}\int \mathbf{P}^{\perp}(\mathbf{r},t)\cdot\mathbf{D}(\mathbf{r},t)\,d^3\mathbf{r}}\nonumber \\
+&+&\mathrm{\frac{\epsilon_0}{2}\int\left[\mathbf{D}^2(\mathbf{r},t)-c^2\left(\nabla\times\mathbf{A}(\mathbf{r},t)\right)^2\right]d^3\mathbf{r}}
+\label{minimalhamiltonian1}
+\end{eqnarray} 
+This is the direct coupling Hamiltonian. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Appendix: Gauge Transformation}
+The two state Hamiltonian is
+\begin{equation}
+\mathrm{H(\mathbf{r})}=\mathrm{\left(\frac{P^2}{2M}+V\right)I \,+\frac{\hbar\Omega}{2}}
+\begin{bmatrix}
+&\cos{\theta(\mathbf{r})}& &e^{-i\theta(\mathbf{r})}\sin{\theta(\mathbf{r})}& \\
+&e^{i\theta(\mathbf{r})}\sin{\theta(\mathbf{r})}& &-\cos{\theta(\mathbf{r})}&
+\end{bmatrix} \\
+\end{equation}
+where $I$ is the identity matrix, and $\theta(\mathbf{r})$ is defined by
+\begin{eqnarray}
+&&\mathrm{\cos{\left(2\theta(\mathbf{r})\right)}=\frac{-\delta}{\Omega_r(\mathbf{r})}} \\
+&&\mathrm{\sin{\left(2\theta(\mathbf{r})\right)}=\frac{\Omega(\mathbf{r})}{\Omega_r(\mathbf{r})}}
+\end{eqnarray}
+Here $\Omega$ is the Rabi frequency and $\delta$ is the detuning between the laser and atomic frequency.  The eigenenergies are given by
+\begin{equation}
+\mathrm{E_{\pm}=\pm\frac{\hbar\Omega(\mathbf{r})}{2}}
+\end{equation}
+and the corresponding eigenvectors are
+\begin{eqnarray}
+&&\mathrm{\ket{\chi_1(\mathbf{r})}=}
+\begin{bmatrix}
+\mathrm{\cos{\left(\frac{\theta(\mathbf{r})}{2}\right)} }\\
+\mathrm{e^{i\phi(\mathbf{r})}\sin{\left(\frac{\theta(\mathbf{r})}{2}\right)}}
+\end{bmatrix} \\
+&&\mathrm{\ket{\chi_2(\mathbf{r})}=}
+\begin{bmatrix}
+\mathrm{-e^{-i\phi(\mathbf{r})}\sin{\left(\frac{\theta(\mathbf{r})}{2}\right)}}\\
+\mathrm{\cos{\left(\frac{\theta(\mathbf{r})}{2}\right)} }
+\end{bmatrix}
+\end{eqnarray}
+These states form an orthonormal basis, and thus we can expand the state vector $\ket{\Psi}$ in terms of the eigenvectors 
+\begin{equation}
+\mathrm{\ket{\Psi(\mathbf{r},t)}=\sum_{l=1}^2\psi_j(\mathbf{r},t)\ket{\chi_1(\mathbf{r})}}
+\end{equation}
+
+
+\begin{thebibliography}{8}
+\bibitem{wei95}{H. Wei, R. Han, and X. Wei, Phys. Rev. Lett. \textbf{75}, 2071 (1995).}
+
+\bibitem{barnett}{S. M. Barnett, Phys. Rev. Lett. 104, 070401 (2010).}
+
+\bibitem{chiao}{J. C. Garrison and R. Y. Chiao, Phys. Rev. A 70, 053826 (2004).}
+
+\bibitem{mansuripur}{M. Mansuripur and A. R. Zakharian, Phys. Rev. E 79, 026608 (2009).}
+
+\bibitem{ketterle}{G. K. Campbell, A. E. Leanhardt, J. Mun, M. Boyd, E. W. Streed, W. Ketterle, and D. E. Pritchard, Phys. Rev. Lett. 94, 170403 (2005).}
+
+\bibitem{feng}{W. She, J. Yu, and R. Feng, Phys. Rev. Lett. 101, 243601 (2008).}
+
+\bibitem{hinds}{E. Hinds and S. M. Barnett, Phys. Rev. Lett. 102, 050403 (2009).}
+
+\bibitem{loudon}{S. M. Barnett and R. Loudon, Phil. Trans. R. Soc. A,  368 (2011).}
+
+\bibitem{lang73}{R. Lang, M. O. Scully and W. E. Lamb, Phys. Rev. A \textbf{7}, 1788 (1973).}
+
+\bibitem{domokos08}{J. K. Asboth, H. Ritsch, and P. Domokos, Pyhs. Rev. A \textbf{77}, 063424 (2008).}
+
+\bibitem{wilkens94}{M. Wilkens, Phys. Rev. Lett. \textbf{72}, 5 (1994).}
+
+\bibitem{griffiths}{David J. Griffiths, \textit{Introduction to Electrodynamics} Third Edition (Prentice Hall, New Jersey, 1999).}
+
+\bibitem{cohentannoudji}{C. Cohen-Tannoudji, J. Dupont-Roc, G. Grynberg, \textit{Atom-Photon Interactions} (Wiley Professional, 1989).}
+
+\bibitem{us}{N. Miladinovic, F. Hasan, N. Chisholm, E. A. Hinds, and D. H. J. O'Dell, Phys. Rev. A \textbf{84}, 043822 (2011).}
+
+\bibitem{preble07}{S. F. Preble, Q. Xu, and M. Lipson, Nat. Photon. \textbf{1}, 293 (2007).}
+
+\bibitem{pfeifer07}{Robert N. C. Pfeifer, Timo A. Nieminen, Norman R. Heckenberg, and Halina Rubinsztein-Dunlop, Rev. Mod. Phys. \textbf{79}(4) 1197-1216 (2007)}
+
+\bibitem{loudon2}{M. Padgett, S. M. Barnett and R. Loudon, J. Mod. Opt.\textbf{50} ,1555 (2003).}
+
+\bibitem{boyd}{K Rz\c{a}\`zewski and R. W. Boyd, J. Mod. Opt. 51, \textbf{8}, 1137 (2004).}
+
+\bibitem{thirunamachandran}{D.P. Craig, and T. Thirunamachandran, \textit{Molecular Quantum Electrodynamics} (Dover Publications, 1984).}
+
+\bibitem{loudonbook}{Rodney Loudon, \textit{The Quantum theory of Light} (Oxford, 1973).}
+
+\bibitem{dalibard}{Jean Dalibard, and Fabrice Gerbier, Rev. Mod. Phys. \textbf{83}, 1523 (2011).}
+
+\end{thebibliography}
+
+\end{document}
