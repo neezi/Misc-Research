@@ -1,0 +1,556 @@
+      program gpe2d
+
+!! This program solves the 2D Gross-Pitaevskii equation using the Crank-Nicolson method.
+!! The program allows for imaginary time propagation to obtain the static solution 
+!! to the system, if required.  
+!! The program requires the use of the defins.i file.
+
+      implicit none                                            !! Ensures Fortran doesnt automatically specify 
+                                                               !! variable type based on first character.
+       
+*************************************** DEFINITION OF VARIABLES***************************************************
+      include             'defins.i'                           !! Calls the external code 'defins.i'.
+
+      integer             i,j                                  !! Indices for x and y grid points.
+      integer             k                                    !! Index for iterative time evo step.
+      integer             iframe                               !! Index for saved outputs of wavfunction.
+      integer             itime,itime2,itime_im                !! Index for general time step, time
+                                                               !! step under real time propagation, and number
+                                                               !! time steps under imag propagation.
+
+      double precision    x,y,t,tnext                          !! Variables for x,y positions and time.
+      double precision    xmax,ymax                            !! The half-widths of the box in x and y.
+      double precision    N,N_old,N_diff,R,P1                  !! Variables for the particle number N, 
+                                                               !! the old number at previous time step, 
+                                                               !! and the fractional difference between the two.
+      double precision    E,E_old,E_diff                       !! Same as above but variables for energy.
+      double precision    V(Nx,Ny),Vnext(Nx,Ny)                !! Matrix representing the potential V(x,y).
+      double precision    U(Nx,Ny)                             !! Matrix representing the field U(x,y)=1-V-|psi|^2.
+      double precision    pi                                   !! For the definition of pi.
+
+      complex*16          dt                                   !! The time-step variable.
+      complex*16          RHS_x(Nx,Ny),RHS_y(Nx,Ny)            !! Fields relating to the time evo method.
+      complex*16          psi(0:Nx+1,0:Ny+1)                   !! The wavefunction psi(x,y)
+
+      parameter           (pi=3.1415926535897932d0)
+
+****************************************** MAIN CODE ***********************************************************
+
+** PRELIMINARIES / INITIALIZATION OF VARIABLES:
+
+      dt=dcmplx(dt_real,0.d0)                                 !! Set the time step:
+                                                               !! i) dt=dcmplx(dt_real,0.d0) for real-time prop.
+                                                               !! ii) dt=dcmplx(0.d0,dt_real) for imag-time prop.
+
+      t=0.d0                                                   !! Initialize the time variable.
+      iframe=0                                                 !! Initialize the frame index.
+      itime_im=0
+
+      xmax=dx*dble(Nx-1)/2.d0                                  !! Evaluate the box half-widths, based on 
+      ymax=dy*dble(Ny-1)/2.d0                                  !! values of dx, dy, Nx, Ny given in defins.i
+
+      call get_potential(xmax,ymax,V,t)                        !! Set the potential matrix V(x,y)
+
+      do i=0,Nx+1                                              !! Initialize the wavefunction to some initial
+        j=((Ny+1)/2)					       !! profile, here a homogeneous BEC
+          if(j.eq.0.or.j.eq.Ny+1.or.i.eq.0.or.i.eq.Nx+1)then   !! The outer points stay fixed during the whole sim so
+            psi(i,j)=dcmplx(0.d0,0.d0)                         !! set to 1 for an infinite system or 0 for a trapped system
+          else
+            x=-xmax+dble(i-1)*dx
+	    psi(i,j)=dcmplx(Exp(-x**2),0.d0)
+          end if                           
+                                                      
+      end do
+
+      call get_N(psi,N_old)                                    !! Determine initial particle number.
+      call get_E(psi,V,E_old)                                  !! Determine initial energy of system.
+
+      open(20,file='main.dat')
+
+** TIME-ITERATION LOOP:
+
+      do itime=1,Nt/20
+
+        if(ipot.eq.1.and.dreal(dt).gt.1d-10)then                !! If potential is time-dependent and we are running in real-time... 
+          call get_potential(xmax,ymax,V,t)                     !! Get the updated potential
+          tnext=t+dreal(dt)                                     !! Evaluate t at the next time step, tnext
+          call get_potential(xmax,ymax,Vnext,tnext)             !! Get the potential at the next time step, Vnext
+        endif                                                  
+
+        call get_U(psi,V,U)                                     !! Get the instanteous field U(x,y)
+
+        call get_RHS_x(dt,psi,U,RHS_x,xmax,t)                          !! Determines the RHS of the x-direction time evo equation.
+
+        if(ipot.eq.1.and.dreal(dt).gt.0.d0)then                 !! If potential is time-dependent and we are running in real-time...
+          call get_U(psi,Vnext,U)                               !! Update U with the future potential Vnext.
+        endif
+
+        do k=1,2                                                !! Iterative step to account for time-dependent Hamiltonian in GPE
+          call solve_x(dt,RHS_x,U,psi,xmax,t)                      !! Solve the time evo equation in x to a get an updated psi
+          if(ipot.eq.1.and.dreal(dt).gt.1.d-10)then             !! If potential is time dependent and we are running in real time...
+            call get_U(psi,Vnext,U)                             !! Get the U with updated psi and updated potential
+          else
+            call get_U(psi,V,U)                                 !! If potential is not time dependent, get the U with updated psi and static potential
+          endif
+        end do
+
+        !!call get_RHS_y(dt,psi,RHS_y)                            !! Now perform the time evolution step in the y-direction.  First we evaluate 
+                                                                !! the RHS of the time evolution equation.
+      
+        !!call solve_y(dt,RHS_y,psi)                              !! Next for solve the time evolution equation in y to get the new psi 
+
+
+** IMAGINARY TIME OPERATIONS:
+
+        if(dabs(dimag(dt)).gt.1.d-10)then                       !! If running in imaginary then perform the next tasks...
+
+          call get_N(psi,N)                                     !! Get the current particle number
+          call get_E(psi,V,E)                                   !! Get the current system energy
+          N_diff=dabs(N_old-N)/N                                !! Evaluate the relative change in particle number from last step
+          E_diff=dabs(E_old-E)/E                                !! Evaluate the relative change in energy from last step
+          
+          if(mod(itime,200).eq.0)then                           !! Every 200 time steps, output parameters to screen
+            write(*,*)'itime=',itime,'N=',real(N),              !! (current time index, particle number, change in particle number,
+     &      '  N_diff=',real(N_diff),'  E=',real(E),            !!  energy, change in energy) 
+     &      'E_diff=',real(E_diff)
+          end if
+
+          if(N_diff.lt.1.d-12.and.E_diff.lt.1d-12)then          !! If change in particle number and energy are sufficiently
+                                                                !! small then assume imaginary time solution found
+
+            call save_initial_state(xmax,ymax,psi)              !! Save the imaginary time solution to file
+
+            write(*,*)' '                                       !! Write status to screen
+            write(*,*)'FOUND IMAGINARY TIME SOLUTION'
+            write(*,*)'N =',N
+            write(*,*)'E=',E
+            write(*,*)' ' 
+
+            itime_im=itime                                      !! Record value of time index when solution found
+
+            dt=dcmplx(dt_real,0.0d0)                            !! Change dt to real value for real time propagation to follow
+
+          end if
+
+          N_old=N                                               !! Set current particle number to be the old value, ready for next time step
+          E_old=E                                               !! Same for energy value
+
+        endif
+ 
+
+** REAL TIME OPERATIONS:
+
+        if(dabs(dreal(dt)).gt.1.d-10)then                       !! If propagating in real time, perform the following tasks:
+
+          itime2=itime-itime_im                                 !! Define new time index for real time propagation
+
+          if(itime2.eq.0.or.mod(itime2,5).eq.0)then           !! If the first real time step or every subsequent 200 steps....
+            call get_E(psi,V,E)                                 !! Determine energy. 
+            call get_N(psi,N)   
+            call get_p1(psi,P1,xmax)                             !! Determine momentum.
+	    call get_X(psi,R,xmax)		                !! Determine average position
+           write(*,*)'t=',real(t),'X=',real(R)/real(N),
+     &       'P=',real(P1)/real(N)
+                                            
+            write(20,*)real(t),real(N),real(E)                  !! Write parameters to file 'main.dat'.
+          end if
+
+          if(itime2.eq.0.or.mod(itime2,3).eq.0)then           !! If the first real time step or every subsequent 500 steps....
+            call movie(xmax,ymax,iframe,psi)                   !! Call the routine to genenerate movie frames
+          end if
+        end if
+
+        t=t+dreal(dt)                                           !! Update the time variable to the next time
+
+        if(t.gt.t_end)then                                      !! If the program has reached the chosen t_end....
+          close(20)                                             !! Close the 'main.dat' file.
+          stop                                                  !! Stop the program.
+        end if
+
+      end do                                                    !! Closes the main time iteration loop.
+
+      stop
+
+      end
+
+*************************************************END OF MAIN PROGRAM***********************************************************
+
+      subroutine get_potential(xmax,ymax,V,t)
+
+!! Subroutine which sets the potential acting on the system V(x,y) and returns it to the main program.
+!! The potential may be time-independent, in which this needs to be called only once, or it may be
+!! time-dependent, in which it should be called every real-time step.  
+
+      include 'defins.i'
+
+      integer           i,j
+      double precision  V(Nx,Ny),x,y,xmax,ymax,t
+      parameter         (pi=3.1415926535897932d0)
+      
+      open(25,file='potential.dat')                         !! Open a file to write the potential to.
+
+      do i=1,Nx                                             !! Loop over x-indices
+       x=-xmax+dble(i-1)*dx                                 !! Generates x position at each index.
+
+       do j=1,Ny                                            !! Loop over y-indices.
+         y=-ymax+dble(j-1)*dy                               !! Generates y-position at each index.
+
+         		                   
+        V(i,j)=-100.0d0*(atan(1.0d0*(x+150.0d0*t - 8.0d0)) + pi/2.0d0)          
+         
+
+       end do
+
+       write(25,*)x,V(i,int((Ny-1)/2))                     !! Write cross-section of potential to file.
+
+      end do  
+
+      close(25)                                            !! Close 'potential.dat' file.
+
+      return 
+      end
+
+******************************************************************************************************
+      subroutine get_N(psi,N)
+
+!! Subroutine to perform a simple, trapezium rule integration of |psi|^2 to return the particle number.
+
+      include 'defins.i'
+
+      integer i,j
+      double precision N
+      complex*16 psi(0:Nx+1,0:Ny+1)
+
+      N=0.d0                            !! First set N to be zero
+
+      do i=1,Nx                         !! Sum all contributions over the whole grid.
+        j=((Ny+1)/2)
+          N=N+real(zabs(psi(i,j))**2)        
+        end do
+      
+
+      N=N*dx                        
+
+      return
+      end
+
+******************************************************************************************************
+      subroutine get_p1(psi,P1,xmax)
+
+!! Subroutine to perform a simple, trapezium rule to return the momentum 
+
+      include 'defins.i'
+
+      integer i,j
+      double precision xmax,P1
+      complex*16 psi(0:Nx+1,0:Ny+1), psi2(0:Nx+1,0:Ny+1)
+     
+      P1=0.d0                           !! first set the momentum to zero
+      do i=1,Nx                        !! Sum all contributions over the whole grid.
+         j=((Ny+1)/2)
+         x=-xmax+dble(i-1)*dx
+         psi2(i,j)=dcmplx((dreal(psi(i+1,j)-
+     $     psi(i-1,j))/(2.d0*dx)),
+     $     (dimag(psi(i+1,j)-
+     $     psi(i-1,j))/(2.d0*dx)))
+      P1 = P1+real(dimag(conjg(psi(i,j))*psi2(i,j)))*dx 
+	         
+      end do
+       
+
+       P1=P1*dx                   
+
+       return
+       end
+
+***********************************************************************
+
+      subroutine get_X(psi,R,xmax)
+
+!! Subroutine to perform a simple, trapezium rule integration of x*|psi|^2 to return the position.
+
+      include 'defins.i'
+
+      integer i,j
+      double precision xmax,R,holder1
+      complex*16 psi(0:Nx+1,0:Ny+1)
+
+      holder=0.d0                                 !! First set R to be zero
+      R=0.d0   
+      do i=1,Nx                        !! Sum all contributions over the whole grid.
+          j=((Ny+1)/2)
+          x=-xmax+dble(i-1)*dx
+	  holder1 =real(zabs(psi(i,j))**2) 
+	  R=R+dble(x)*holder1        
+      end do
+      
+
+      R=R*dx                   
+
+      return
+      end
+
+***********************************************************************
+
+
+      subroutine get_U(psi,V,U)
+
+!! Subroutine to calculate the matrix U(x,y)=1-V(x,y)-|psi(x,y)|^2 and 
+!! return it to the main program.
+
+      include           'defins.i'
+      integer            i,j
+      double precision   U(Nx,Ny),V(Nx,Ny)
+      complex*16         psi(0:Nx+1,0:Ny+1)
+
+      do i=1,Nx
+        do j=1,Ny
+          U(i,j)=-V(i,j)
+        end do
+      end do
+
+      return
+      end
+
+********************************************************************
+      subroutine save_initial_state(xmax,ymax,psi)
+
+!! Subroutine which takes the wavefunction obtained by imaginary time
+!! propagation and writes thje density to file as:
+!!    - the full 2D density |psi(x,y)|^2 (initial_state_full.dat)
+!!    - the cross-section |psi(x,0)|^2 (initial_state_x.dat)
+!!    - the cross-section |psi(0,y|^2 (initial_state_y.dat)
+
+      include 'defins.i'
+
+      integer i,j
+      double precision x,y,xmax,ymax
+      complex*16 psi(0:Nx+1,0:Ny+1)
+
+      open(21,file='initial_state_full.dat')
+      do i=1,Nx
+        x=-xmax+dble(i-1)*dx
+        do j=1,Ny
+          y=-ymax+dble(j-1)*dy
+          write(21,'(3e14.6)')real(x),real(y),
+     &                 real(zabs(psi(i,j))**2)
+        end do
+      end do
+      close(21)
+
+      open(21,file='initial_state_x.dat')
+      do i=1,Nx
+        x=-xmax+dble(i-1)*dx
+        write(21,'(2e14.6)')real(x),
+     &      real(zabs(psi(i,int((Ny+1)/2)))**2)
+      end do
+      close(21)
+
+      open(21,file='initial_state_y.dat')
+      do j=1,Ny
+        y=-ymax+dble(j-1)*dy
+        write(21,'(2e14.6)')real(y),
+     &      real(zabs(psi(int((Nx+1)/2),j))**2)
+      end do
+      close(21)
+
+      return
+      end
+
+
+*********************************************************************
+      subroutine get_E(psi,V,E)
+
+!! Subroutine to calculate the total energy of the system E and return
+!! it to the main program.  The energy integral is approximated via 
+!! simple trapezium sum of all contributions, with the derivative terms
+!! in the energy integral evaluates via finite difference approximation.
+
+      implicit none  
+      include 'defins.i'
+      complex*16 psi(0:Nx+1,0:Ny+1)
+      double precision mdpsisq,V(Nx,Ny),E
+      integer i,j
+
+      E=0.d0
+      do i=1,Nx
+        do j=1,Ny
+          mdpsisq=zabs(psi(i,j))**2
+                           
+          E=E+V(i,j)*mdpsisq                              !! Potential energy
+          E=E+0.5*(
+     $      (dreal(psi(i+1,j)-psi(i-1,j))/(2.d0*dx))**2+  !! Kinetic energy
+     $      (dimag(psi(i+1,j)-psi(i-1,j))/(2.d0*dx))**2)
+     !!$      (dreal(psi(i,j+1)-psi(i,j-1))/(2.d0*dy))**2+
+     !!$      (dimag(psi(i,j+1)-psi(i,j-1))/(2.d0*dy))**2)
+        enddo
+      enddo
+
+      E=E*dx
+      return
+      end
+
+*********************************************************************
+      subroutine get_RHS_x(dt,psi,U,RHS_x,xmax,t)
+
+!! Subroutine which calculates the RHS of the time evolution equation
+!! for evolution in the x-direction (for which we take the Hamiltonian
+!! to contain all terms.     
+
+      include 'defins.i'
+
+      integer           i,j
+      complex*16        psi(0:Nx+1,0:Ny+1)
+      complex*16        RHS_x(Nx,Ny),dt
+      double precision  U(Nx,Ny),V2,x,xmax,t
+
+      j=((Ny+1)/2)
+       do i=1,Nx
+       x=-xmax+dble(i-1)*dx
+       V2=100.0d0*(atan(1.0d0*(x+150.0d0*t - 8.0d0)) + pi/2.0d0)  	
+       RHS_x(i,j)=dt*dcmplx(0.d0,0.25d0/dx**2)       *psi(i-1,j)+
+     &         (dcmplx(1.d0,0.d0)+
+     &          dt*dcmplx(V2*x,0.5d0*(U(i,j)-1.d0/dx**2)))
+     &                                                *psi(i,j)  +
+     &             dt*dcmplx(0.d0,0.25d0/dx**2)       *psi(i+1,j)
+       end do
+      
+      return
+      end
+******************************************************************
+      subroutine get_RHS_y(dt,psi,RHS_y)
+
+!! Subroutine which calculate the RHS of the time evolution equation
+!! for evolution in the y-direction (for which we drop the time-
+!! dependent terms of the Hamiltonian.      
+
+      include     'defins.i'
+
+      integer     i,j
+      complex*16  psi(0:Nx+1,0:Ny+1),RHS_y(Nx,Ny),dt
+      
+      do j=1,Ny
+       do i=1,Nx
+        RHS_y(i,j)=dt*dcmplx(0.d0,0.25d0/dy**2)     *psi(i,j-1)+
+     &             (dcmplx(1.d0,0.d0)+
+     &             dt*dcmplx(0.d0,-0.5d0/dy**2))    *psi(i,j)  +
+     &             dt*dcmplx(0.d0,0.25d0/dy**2)     *psi(i,j+1)
+       end do
+      end do
+      return
+      end
+**********************************************************************
+      subroutine solve_x(dt,RHS_x,U,psi,xmax,t)  
+
+!! Solve the time evolution equation in x as a series of tridiagonal matrix 
+!! equations.  Uses the standard tridiagonal solving algorithm.
+!! We use the full Hamiltonian, i.e. include the U(x,y) term.
+
+      include          'defins.i'
+
+      integer           h,i,j
+      double precision  U(Nx,Ny),x,V2,xmax,t
+      complex*16        dummy_1,dummy_Nx,bet,gam(Nx),RHS_x(Nx,Ny)
+      complex*16        b(Nx),a(Nx),c(Nx),psi(0:Nx+1,0:Ny+1),dt
+
+      j=((Ny+1)/2)
+        do i=1,Nx
+          x=-xmax+dble(i-1)*dx
+	  V2=100.0d0*(atan(1.0d0*(x+150.0d0*t - 8.0d0)) + pi/2.0d0)
+	  a(i)=dt*dcmplx(0.d0,-0.25d0/dx**2)
+          b(i)=dcmplx(1.d0,0.d0)+
+     & dt*dcmplx(V2*x,-0.5d0*(U(i,j)-1.d0/dx**2))
+          c(i)=dt*dcmplx(0.d0,-0.25d0/dx**2)
+        end do
+
+        dummy_1 =RHS_x(1,j)
+        dummy_Nx=RHS_x(Nx,j)
+        RHS_x(1,j) =RHS_x(1,j)-a(1)*psi(0,j)
+        RHS_x(Nx,j)=RHS_x(Nx,j)-c(Nx)*psi(Nx+1,j)
+
+        bet=b(1)
+        psi(1,j)=RHS_x(1,j)/bet
+        do h=2,Nx
+          gam(h)=c(h-1)/bet
+          bet=b(h)-a(h)*gam(h)
+          psi(h,j)=(RHS_x(h,j)-a(h)*psi(h-1,j))/bet
+        end do
+        do h=Nx-1,1,-1
+          psi(h,j)=psi(h,j)-gam(h+1)*psi(h+1,j)
+        end do
+        RHS_x(1,j)=dummy_1
+        RHS_x(Nx,j)=dummy_Nx
+     
+      return
+      end
+**********************************************************************
+      subroutine solve_y(dt,RHS_y,psi)
+
+!! Solve the time evolution equation in y as a series of tridiagonal matrix
+!! equations.  Uses the standard tridiagonal solving algorithm.
+!! We use only the time-independent part of the Hamiltonian, i.e. ignore
+!! the U(x,y) term here.
+
+      include     'defins.i'
+
+      integer     h,i,j
+      complex*16  dummy_1,dummy_Ny,bet,gam(Ny),RHS_y(Nx,Ny)
+      complex*16  b(Ny),a(Ny),c(Ny),psi(0:Nx+1,0:Ny+1),dt
+
+      do i=1,Nx
+        do j=1,Ny
+          a(j)=dt*dcmplx(0.d0,-0.25d0/dy**2)
+          b(j)=dcmplx(1.d0,0.d0)+dt*dcmplx(0.d0,0.5d0/dy**2)
+          c(j)=dt*dcmplx(0.d0,-0.25d0/dy**2)
+        end do
+
+        dummy_1 =RHS_y(i,1)
+        dummy_Ny=RHS_y(i,Ny)
+        RHS_y(i,1) =RHS_y(i,1)-a(1)*psi(i,0)
+        RHS_y(i,Ny)=RHS_y(i,Ny)-c(Ny)*psi(i,Ny+1)
+        bet=b(1)
+        psi(i,1)=RHS_y(i,1)/bet
+        do h=2,Ny
+          gam(h)=c(h-1)/bet
+          bet=b(h)-a(h)*gam(h)
+          psi(i,h)=(RHS_y(i,h)-a(h)*psi(i,h-1))/bet
+        end do
+        do h=Ny-1,1,-1
+          psi(i,h)=psi(i,h)-gam(h+1)*psi(i,h+1)
+        end do
+        RHS_y(i,1)=dummy_1
+        RHS_y(i,Ny)=dummy_Ny
+      end do
+      return
+      end
+***********************************************************************
+      subroutine movie(xmax,ymax,iframe,psi)
+!! Subroutine to write out the full system density and phase at regular 
+!! intervals, suitable for generating movies of the evolution of density.
+
+      include          'defins.i'
+      integer           i,j,iframe
+      double precision  xmax,ymax
+      complex*16        psi(0:Nx+1,0:Ny+1)
+      character*12      filename
+
+      filename='psi****.dat'
+      write(filename(4:7),'(i4.4)')iframe
+
+      open(12,file=filename)
+
+      do i=1,Nx
+        x=-xmax+dble(i-1)*dx
+          j=((Ny+1)/2)
+          y=-ymax+dble(j-1)*dy
+          write(12,'(4e14.6)')real(x),real(y),
+     &real(zabs(psi(i,j))**2),
+     &real(datan2(dimag(psi(i,j)),dreal(psi(i,j))))
+        
+      end do
+
+      close(12)
+
+      iframe=iframe+1
+      return
+      end

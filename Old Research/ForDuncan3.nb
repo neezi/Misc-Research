@@ -1,0 +1,504 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 7.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[     15310,        494]
+NotebookOptionsPosition[     14370,        460]
+NotebookOutlinePosition[     14714,        475]
+CellTagsIndexPosition[     14671,        472]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Getting the limits of Eq(19)", "Section",
+ CellChangeTimes->{{3.5139260660963173`*^9, 3.5139260817743444`*^9}}],
+
+Cell[TextData[{
+ "Using Eq(13) together with the inequalities  ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"n", ">>", "1"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " and ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"\[Alpha]", " ", 
+     SuperscriptBox["n", "2"]}], ">>", "L"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " we find that ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["k", 
+     RowBox[{"n", "*"}]], "\[TildeTilde]", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"2", "n"}], "+", 
+       RowBox[{"1", "/", "2"}]}], ")"}], "\[Pi]"}]}], TraditionalForm]]],
+ ".\n\nOn substituting this result into Eq(14) we obtain Eq(18) for ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["\[CapitalDelta]L", 
+    RowBox[{"n", "*"}]], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ".\nWhen this value for  ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["\[CapitalDelta]L", 
+    RowBox[{"n", "*"}]], TraditionalForm]]],
+ " is used in Eq(17), we obtain the first line of Eq(19) (which I have not \
+checked but take on trust). \nThe derivation of this Eq(19) already assumes \
+that ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"n", ">>", "1"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " and ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"\[Alpha]", " ", 
+     SuperscriptBox["n", "2"]}], ">>", "L"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", so I will apply those approximations first."
+}], "Text",
+ CellChangeTimes->{{3.513939649130406*^9, 3.513939984506595*^9}, {
+  3.5139400168454523`*^9, 3.5139401824865427`*^9}}],
+
+Cell["Taking  n >> 1, the first line of Eq(19) becomes", "Text",
+ CellChangeTimes->{{3.513929705514697*^9, 3.5139297245467305`*^9}, {
+  3.513929816056491*^9, 3.513929831796919*^9}, {3.513929974225169*^9, 
+  3.5139299784527764`*^9}, {3.5139394649720826`*^9, 3.513939465533684*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  FractionBox[
+   RowBox[{
+    RowBox[{"2", 
+     SuperscriptBox["\[Alpha]", "2"], 
+     SuperscriptBox[
+      RowBox[{"(", 
+       RowBox[{"2", "\[Pi]", " ", "n"}], ")"}], "3"]}], "+", 
+    RowBox[{"\[Alpha]", 
+     RowBox[{"(", 
+      RowBox[{"8", "L"}], ")"}], 
+     RowBox[{"(", 
+      RowBox[{"2", "\[Pi]", " ", "n"}], ")"}]}]}], 
+   RowBox[{
+    RowBox[{"2", "\[Alpha]", " ", "L", 
+     SuperscriptBox[
+      RowBox[{"(", 
+       RowBox[{"2", "\[Pi]", " ", "n"}], ")"}], "2"]}], "+", 
+    RowBox[{"4", " ", 
+     SuperscriptBox["L", "2"]}]}]], 
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{"-", "1"}], "+", 
+    RowBox[{
+     FractionBox["1", "8"], 
+     SuperscriptBox[
+      RowBox[{"(", 
+       RowBox[{
+        FractionBox[
+         RowBox[{"2", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"2", " ", "\[Alpha]", " ", "L", 
+             SuperscriptBox[
+              RowBox[{"(", 
+               RowBox[{"2", " ", "\[Pi]", "  ", "n"}], ")"}], "2"]}], "+", 
+            RowBox[{"4", 
+             SuperscriptBox["L", "2"]}]}], ")"}]}], 
+         RowBox[{"\[Alpha]", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"2", "\[Alpha]", 
+             SuperscriptBox[
+              RowBox[{"(", 
+               RowBox[{"2", "\[Pi]", " ", "n"}], ")"}], "3"]}], "+", 
+            RowBox[{"16", " ", "\[Pi]", " ", "n", " ", "L"}]}], ")"}]}]], "-",
+         "\[Pi]"}], ")"}], "2"]}]}], ")"}]}]], "Input",
+ CellChangeTimes->{{3.5139256206631346`*^9, 3.5139258465415316`*^9}, 
+   3.5139298612653704`*^9, 3.513929909921856*^9, {3.51392998637759*^9, 
+   3.513930137323456*^9}, {3.5139301818927336`*^9, 3.5139302144031906`*^9}, 
+   3.5139303453186207`*^9, 3.513930446172798*^9}],
+
+Cell[TextData[{
+ "Now incorporating the inequality ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{" ", 
+    RowBox[{
+     RowBox[{"\[Alpha]", " ", 
+      SuperscriptBox["n", "2"]}], ">>", "L"}]}], TraditionalForm]]],
+ ", this becomes"
+}], "Text",
+ CellChangeTimes->{{3.513926199242551*^9, 3.5139262216129904`*^9}, {
+  3.513930257350066*^9, 3.513930304540149*^9}, {3.51393948026011*^9, 
+  3.5139394961409373`*^9}, {3.513940224591017*^9, 3.5139402437634506`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  FractionBox[
+   RowBox[{"2", 
+    SuperscriptBox["\[Alpha]", "2"], 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"2", "\[Pi]", " ", "n"}], ")"}], "3"]}], 
+   RowBox[{"2", "\[Alpha]", " ", "L", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"2", "\[Pi]", " ", "n"}], ")"}], "2"]}]], 
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{"-", "1"}], "+", 
+    RowBox[{
+     FractionBox["1", "8"], 
+     SuperscriptBox[
+      RowBox[{"(", 
+       RowBox[{
+        FractionBox[
+         RowBox[{"2", 
+          RowBox[{"(", 
+           RowBox[{"2", " ", "\[Alpha]", " ", "L", 
+            SuperscriptBox[
+             RowBox[{"(", 
+              RowBox[{"2", " ", "\[Pi]", "  ", "n"}], ")"}], "2"]}], ")"}]}], 
+         RowBox[{"\[Alpha]", 
+          RowBox[{"(", 
+           RowBox[{"2", "\[Alpha]", 
+            SuperscriptBox[
+             RowBox[{"(", 
+              RowBox[{"2", "\[Pi]", " ", "n"}], ")"}], "3"]}], ")"}]}]], "-", 
+        "\[Pi]"}], ")"}], "2"]}]}], ")"}]}]], "Input",
+ CellChangeTimes->{
+  3.513930402898322*^9, {3.5139304562036157`*^9, 3.5139305032220984`*^9}}],
+
+Cell["which simplifies to", "Text",
+ CellChangeTimes->{{3.5139262309262066`*^9, 3.513926234576613*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  FractionBox[
+   RowBox[{"\[Alpha]", " ", "2", "\[Pi]", " ", "n"}], 
+   RowBox[{" ", "L"}]], 
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{"-", "1"}], "+", 
+    RowBox[{
+     FractionBox["1", "8"], 
+     SuperscriptBox[
+      RowBox[{"(", 
+       RowBox[{
+        FractionBox[
+         RowBox[{" ", "L"}], 
+         RowBox[{"\[Alpha]", " ", "\[Pi]", " "}]], "-", "\[Pi]"}], ")"}], 
+      "2"]}]}], ")"}]}]], "Input",
+ CellChangeTimes->{{3.5139305239545345`*^9, 3.5139305648422065`*^9}, {
+  3.5139306924504304`*^9, 3.5139307259748898`*^9}}],
+
+Cell[TextData[{
+ "Finally, we have to say something about ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"L", "/", "\[Alpha]"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ". \nSince good reflectivity means ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"k", " ", "\[Alpha]"}], ">>", "1"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " (Eq(8)), and since ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"k", " ", "\[Tilde]", 
+    FractionBox[
+     RowBox[{"2", " ", "n", " ", "\[Pi]"}], "L"]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", we can safely assume that  ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    FractionBox[
+     RowBox[{"2", " ", "n", " ", "\[Pi]", " ", "\[Alpha]"}], "L"], ">>", 
+    "1"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " or  ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"2", " ", "\[Pi]", "  ", "\[Alpha]", " ", "n"}], ">>", "L"}], 
+   TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ".\n(This last inequality naturally implies the previous inequality ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"\[Alpha]", " ", 
+     SuperscriptBox["n", "2"]}], ">>", "L"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " since ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"n", ">>", "1"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " is our first assumption).\n"
+}], "Text",
+ CellChangeTimes->{{3.5139262941531177`*^9, 3.513926305182337*^9}, {
+  3.5139295680628557`*^9, 3.513929574677267*^9}, {3.5139312148797483`*^9, 
+  3.5139312367041864`*^9}, {3.5139402505026627`*^9, 3.5139402720151005`*^9}, {
+  3.5139403297976017`*^9, 3.5139404125869474`*^9}, {3.51394046533064*^9, 
+  3.5139405771984367`*^9}, {3.5139406651669908`*^9, 3.5139407074274654`*^9}, {
+  3.5139407982976246`*^9, 3.513940799639227*^9}, {3.513940848560913*^9, 
+  3.5139410168384085`*^9}, {3.513941055666877*^9, 3.5139410978961506`*^9}}],
+
+Cell[TextData[{
+ "So, what should we say about ",
+ Cell[BoxData[
+  FormBox[
+   FractionBox["L", "\[Alpha]"], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", which we know satisfies ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    FractionBox["L", "\[Alpha]"], 
+    RowBox[{"<<", "2"}], " ", "\[Pi]", " ", "n"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "?\n(i)     We can allow ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"L", ">>", "\[Alpha]"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " (as suggested in the draft paper) but we are not free to let ",
+ Cell[BoxData[
+  FormBox[
+   FractionBox["L", "\[Alpha]"], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " be too big because it must be small compared with ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"2", "\[Pi]", " ", "n"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ".\nIn that case ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SubscriptBox[
+      RowBox[{"(", 
+       FractionBox["B", "A"], ")"}], "max"], "\[TildeEqual]", 
+     RowBox[{
+      FractionBox[
+       RowBox[{"\[Alpha]", " ", "2", "\[Pi]", " ", "n"}], 
+       RowBox[{" ", "L"}]], 
+      RowBox[{"(", 
+       FractionBox["1", "8"], ")"}], 
+      SuperscriptBox[
+       RowBox[{"(", 
+        FractionBox[
+         RowBox[{" ", "L"}], 
+         RowBox[{" ", 
+          RowBox[{"\[Alpha]", " ", "\[Pi]", " "}]}]], ")"}], "2"]}]}], "=", 
+    FractionBox[
+     RowBox[{"L", " ", "n"}], 
+     RowBox[{"4", " ", "\[Pi]", " ", "\[Alpha]"}]]}], TraditionalForm]],
+  FormatType->"TraditionalForm"]
+}], "Text",
+ CellChangeTimes->{{3.5139411178173857`*^9, 3.5139413955914736`*^9}, {
+  3.513941437742748*^9, 3.5139414380703487`*^9}, {3.5139415395329266`*^9, 
+  3.5139416096706495`*^9}, {3.513941690556792*^9, 3.5139416993084073`*^9}, {
+  3.513942380639604*^9, 3.5139424300604906`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  FractionBox[
+   RowBox[{"\[Alpha]", " ", "2", "\[Pi]", " ", "n"}], 
+   RowBox[{" ", "L"}]], 
+  FractionBox["1", "8"], 
+  SuperscriptBox[
+   RowBox[{"(", 
+    FractionBox[
+     RowBox[{" ", "L"}], 
+     RowBox[{"\[Alpha]", " ", "\[Pi]", " "}]], ")"}], "2"]}]], "Input",
+ CellChangeTimes->{
+  3.5139414744340124`*^9, 3.5139415133560805`*^9, {3.5139415656473722`*^9, 
+   3.5139415673945756`*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{"L", " ", "n"}], 
+  RowBox[{"4", " ", "\[Pi]", " ", "\[Alpha]"}]]], "Output",
+ CellChangeTimes->{3.513941516444886*^9, 3.5139415684709773`*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "(ii) If instead we take ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"L", 
+    RowBox[{"<<", "\[Alpha]"}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", we obtain  ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SubscriptBox[
+      RowBox[{"(", 
+       FractionBox["B", "A"], ")"}], "max"], "\[TildeEqual]", 
+     RowBox[{
+      FractionBox[
+       RowBox[{"\[Alpha]", " ", "2", "\[Pi]", " ", "n"}], 
+       RowBox[{" ", "L"}]], 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"-", "1"}], "+", 
+        RowBox[{
+         FractionBox["1", "8"], 
+         SuperscriptBox["\[Pi]", "2"]}]}], ")"}]}]}], "=", 
+    RowBox[{"0.23", " ", 
+     FractionBox[
+      RowBox[{" ", 
+       RowBox[{"2", "\[Pi]", " ", "n"}]}], 
+      RowBox[{" ", "L"}]], "\[Alpha]"}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"]
+}], "Text",
+ CellChangeTimes->{{3.513941624724676*^9, 3.5139416692159543`*^9}, {
+  3.5139417163280373`*^9, 3.5139417200408435`*^9}, {3.51394180343859*^9, 
+  3.5139418067769957`*^9}, {3.513941837119049*^9, 3.5139418567126837`*^9}, {
+  3.513942402308042*^9, 3.5139424076432514`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{"-", "1"}], "+", 
+    RowBox[{
+     FractionBox["1", "8"], 
+     SuperscriptBox["\[Pi]", "2"]}]}], ")"}], "//", "N"}]], "Input",
+ CellChangeTimes->{{3.5139417701013317`*^9, 3.5139417768405437`*^9}, {
+  3.513941812424206*^9, 3.513941830894638*^9}}],
+
+Cell[BoxData["0.23370055013616975`"], "Output",
+ CellChangeTimes->{{3.5139418094758005`*^9, 3.513941832392241*^9}}]
+}, Open  ]],
+
+Cell[TextData[{
+ "This looks similar to Eq(20), but differs by the numerical factor 0.23.\n\n\
+It seems to me that in fact we are free to operate in either regime and that \
+neither limit agrees with Eq(20). \nIn the limit ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"L", ">>", "\[Alpha]", " "}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " the largest ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"L", "/", "\[Alpha]"}], "\[Tilde]", "n"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", giving a largest value for ",
+ Cell[BoxData[
+  FormBox[
+   FractionBox["B", "A"], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " of  ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    FractionBox["B", "A"], "~", 
+    FractionBox[
+     SuperscriptBox["n", "2"], 
+     RowBox[{"4", "\[Pi]"}]]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", which is pretty big.\nIn the  limit ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"L", 
+    RowBox[{"<<", "\[Alpha]"}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ",  the ratio ",
+ Cell[BoxData[
+  FormBox[
+   FractionBox["\[Alpha]", "L"], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " can be as large as we like, and is given by ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox[
+     RowBox[{"(", 
+      FractionBox["B", "A"], ")"}], "max"], "\[TildeEqual]", 
+    RowBox[{"0.4", " ", "\[Pi]", " ", "n", 
+     FractionBox["\[Alpha]", 
+      RowBox[{" ", "L"}]]}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"]
+}], "Text",
+ CellChangeTimes->{{3.5139418753859167`*^9, 3.5139420061453457`*^9}, 
+   3.5139420951591024`*^9, {3.5139421447359896`*^9, 3.513942270690611*^9}, {
+   3.51394231009628*^9, 3.5139423293935137`*^9}, {3.5139424564869375`*^9, 
+   3.513942488825794*^9}, {3.513942520228649*^9, 3.5139426415656624`*^9}}]
+}, Open  ]]
+},
+WindowSize->{601, 530},
+WindowMargins->{{86, Automatic}, {0, Automatic}},
+FrontEndVersion->"7.0 for Microsoft Windows (32-bit) (February 18, 2009)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[567, 22, 117, 1, 71, "Section"],
+Cell[687, 25, 1605, 52, 137, "Text"],
+Cell[2295, 79, 280, 3, 29, "Text"],
+Cell[2578, 84, 1727, 51, 57, "Input"],
+Cell[4308, 137, 454, 12, 29, "Text"],
+Cell[4765, 151, 1109, 35, 57, "Input"],
+Cell[5877, 188, 103, 1, 29, "Text"],
+Cell[5983, 191, 559, 18, 48, "Input"],
+Cell[6545, 211, 1894, 54, 139, "Text"],
+Cell[8442, 267, 1850, 56, 117, "Text"],
+Cell[CellGroupData[{
+Cell[10317, 327, 419, 13, 48, "Input"],
+Cell[10739, 342, 181, 4, 48, "Output"]
+}, Open  ]],
+Cell[10935, 349, 1131, 35, 40, "Text"],
+Cell[CellGroupData[{
+Cell[12091, 388, 311, 9, 47, "Input"],
+Cell[12405, 399, 115, 1, 30, "Output"]
+}, Open  ]],
+Cell[12535, 403, 1819, 54, 145, "Text"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+

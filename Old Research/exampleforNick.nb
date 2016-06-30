@@ -1,0 +1,87 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      2126,         78]
+NotebookOptionsPosition[      1767,         60]
+NotebookOutlinePosition[      2120,         76]
+CellTagsIndexPosition[      2077,         73]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"diffusionsolution", "[", 
+   RowBox[{"D_", ",", "x_", ",", "t_"}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"1", "/", 
+    RowBox[{"Sqrt", "[", 
+     RowBox[{"4", "*", "Pi", "*", "D", "*", "t"}], "]"}]}], "*", 
+   RowBox[{"Exp", "[", 
+    RowBox[{
+     RowBox[{"-", 
+      RowBox[{"x", "^", "2"}]}], "/", 
+     RowBox[{"(", 
+      RowBox[{"4", "*", "D", "*", "t"}], ")"}]}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.537901198263605*^9, 3.537901199628389*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Integrate", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"diffusionsolution", "[", 
+     RowBox[{"D", ",", "x", ",", "t"}], "]"}], "*", 
+    RowBox[{"x", "^", "2"}]}], ",", 
+   RowBox[{"{", 
+    RowBox[{"x", ",", 
+     RowBox[{"-", "Infinity"}], ",", "Infinity"}], "}"}], ",", 
+   RowBox[{"Assumptions", "\[Rule]", 
+    RowBox[{
+     RowBox[{"t", "\[Element]", "Reals"}], " ", "&&", " ", 
+     RowBox[{"t", ">", "0"}], " ", "&&", " ", 
+     RowBox[{"D", " ", "\[Element]", "Reals"}], " ", "&&", " ", 
+     RowBox[{"D", ">", "0"}]}]}]}], "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"2", " ", "D", " ", "t"}]], "Output",
+ CellChangeTimes->{3.537901247800332*^9}]
+}, Open  ]]
+},
+WindowSize->{740, 652},
+WindowMargins->{{4, Automatic}, {Automatic, 4}},
+FrontEndVersion->"8.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (October 5, \
+2011)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 491, 14, 27, "Input"],
+Cell[CellGroupData[{
+Cell[1073, 38, 573, 15, 43, "Input"],
+Cell[1649, 55, 102, 2, 27, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
